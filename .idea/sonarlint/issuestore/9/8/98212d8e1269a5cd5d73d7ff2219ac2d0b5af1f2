@@ -1,5 +1,0 @@
-
-r
-java:S1488A"\Immediately return this expression instead of assigning it to the temporary variable "flag".(˜ø¨
-^
-java:S2095;"HUse try-with-resources or close this "SqlSession" in a "finally" clause.(å„Ş
