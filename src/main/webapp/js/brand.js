@@ -44,8 +44,18 @@ new Vue({
     },
 
     methods: {
-        handleMultiDelete(){
+        handleMultiDelete() {
             var _this = this;
+
+            // 检查是否有选中的数据
+            if (this.multipleSelection.length === 0) {
+                this.$message.warning('您未选择任何数据');
+                setTimeout(() => {
+                    _this.$message.closeAll();
+                }, 2000);
+                return; // 不执行删除操作
+            }
+
             _this.$confirm('此操作将永久删除所选的所有记录, 是否继续?', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
