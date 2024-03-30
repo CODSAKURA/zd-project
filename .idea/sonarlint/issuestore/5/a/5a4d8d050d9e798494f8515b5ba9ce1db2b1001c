@@ -1,0 +1,15 @@
+
+d
+java:S1192."IDefine a constant instead of duplicating this literal "username" 3 times.(‘Í©øÿÿÿÿ
+’
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(©Ö‚ûÿÿÿÿ
+’
+java:S1130%"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(¾î‚øÿÿÿÿ
+U
+java:S24418":Make "User" serializable or don't store it in the session.(Ùª ”ûÿÿÿÿ
+’
+java:S1130B"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(½‘·ëûÿÿÿÿ
+’
+java:S1130f"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ıŒØÔúÿÿÿÿ
+n
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Ö³„
