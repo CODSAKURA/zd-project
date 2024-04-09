@@ -2,7 +2,7 @@
 
 此项目为私人项目，使用的服务器为 Tomcat 8.5.68 版本。后端采用了以下技术：
 
-- Spring JPA 2.6.0 版本
+- Spring DataJPA 2.6.0 版本
 - MySQL 5.1.34 版本
 - Servlet 3.1.0 版本
 - 阿里巴巴的 Fastjson 1.2.62 版本
@@ -23,7 +23,7 @@
 
 ### 后期计划
 
-- 将此项目完全替换成 Spring 技术。
+- 将MySQL替换成PostgreSQL。
 
 ### 作者
 
@@ -31,4 +31,4 @@
 
 ### 未来计划
 
-- 将MySQL替换成PostgreSQL。
+- 将此项目完全替换成 Spring 技术。
