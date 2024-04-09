@@ -1,4 +1,4 @@
-package com.itheima.web.serlvet;
+package web.serlvet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +35,7 @@ public class BaseServlet extends HttpServlet {
             method.invoke(this, req,resp); //第一个参数是调用该方法的对象，第二三个参数是要传递给那个方法的参数
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }

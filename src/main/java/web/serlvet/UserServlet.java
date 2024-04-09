@@ -1,12 +1,11 @@
-package com.itheima.web.serlvet;
+package web.serlvet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.itheima.pojo.User;
-import com.itheima.service.UserService;
-import com.itheima.service.impl.UserServiceImpl;
-import com.itheima.util.CheckCodeUtil;
-
+import pojo.User;
+import service.UserService;
+import service.impl.UserServiceImpl;
+import util.CheckCodeUtil;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;

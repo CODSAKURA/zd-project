@@ -1,7 +1,7 @@
-package com.itheima.service;
+package service;
 
-import com.itheima.pojo.Brand;
-import com.itheima.pojo.PageBean;
+import pojo.Brand;
+import pojo.PageBean;
 
 public interface BrandService {
 

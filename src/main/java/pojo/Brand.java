@@ -1,17 +1,33 @@
-package com.itheima.pojo;
+package pojo;
 
+import javax.persistence.*;
+
+@Entity//hibernate的实体类
+@Table(name = "tb_brand")//映射的表名
 public class Brand {
-    // id 主键
+    @Id//当前属性为表的主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//主键的生成策略（自增长）
+    @Column(name = "id")//表的列名
     private Integer id;
+
     // 品牌名称
+    @Column(name = "brand_name")
     private String brandName;
+
     // 企业名称
+    @Column(name = "company_name")
     private String companyName;
+
     // 排序字段
+    @Column(name = "ordered")
     private Integer ordered;
+
     // 描述信息
+    @Column(name = "description")
     private String description;
+
     // 状态：0：禁用  1：启用
+    @Column(name = "status")
     private Integer status;
 
 

@@ -1,4 +1,4 @@
-package com.itheima.web.filter;
+package web.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

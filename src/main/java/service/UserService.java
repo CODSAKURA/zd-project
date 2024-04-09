@@ -1,6 +1,6 @@
-package com.itheima.service;
+package service;
 
-import com.itheima.pojo.User;
+import pojo.User;
 
 public interface UserService {
 

@@ -1,4 +1,4 @@
-package com.itheima.util;
+package util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
