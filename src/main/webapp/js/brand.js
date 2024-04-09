@@ -70,7 +70,7 @@ new Vue({
                 // 通过ajax提交数据并执行方法
                 axios({
                     method: "POST",
-                    url: "http://localhost:8080/zd-project/brand/deleteByIds",
+                    url: "http://localhost:8080/zd_project_war/brand/deleteByIds",
                     data: _this.selectedIds
                 }).then(function (resp) {
                     if (resp.data == "success") {
@@ -102,7 +102,7 @@ new Vue({
                 // 用户点击确定后的操作
                 axios({
                     method: "POST",
-                    url: "http://localhost:8080/zd-project/brand/delete",
+                    url: "http://localhost:8080/zd_project_war/brand/delete",
                     data: row
                 }).then(function (resp) {
                     if (resp.data == "success") {
@@ -128,7 +128,7 @@ new Vue({
             var _this = this;
             axios({
                 method: "post",
-                url: "http://localhost:8080/zd-project/brand/selectByPageAndCondition?currentPage="+_this.currentPage+"&pageSize="+_this.pageSize,
+                url: "http://localhost:8080/zd_project_war/brand/selectByPageAndCondition?currentPage="+_this.currentPage+"&pageSize="+_this.pageSize,
                 data:_this.searchBrand
             }).then(function (resp) {
                 _this.tableData = resp.data.row; //resp.data=[row:{}, totalCount:10000]
@@ -144,7 +144,7 @@ new Vue({
             var _this = this;
             axios({
                 method: "POST",
-                url: "http://localhost:8080/zd-project/brand/add",
+                url: "http://localhost:8080/zd_project_war/brand/add",
                 data: _this.brand
             }).then(function (resp) {
                 if (resp.data == "success") {
@@ -183,7 +183,7 @@ new Vue({
             var _this = this;
             axios({
                 method: "POST",
-                url: "http://localhost:8080/zd-project/brand/update",
+                url: "http://localhost:8080/zd_project_war/brand/update",
                 data: _this.modifyBrand
             }).then(function (resp) {
                 if (resp.data == "success") {

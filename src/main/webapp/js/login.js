@@ -29,16 +29,17 @@ function handleSubmit() {
 
     axios({
         method: "POST",
-        url: "http://localhost:8080/zd-project/user/login",
+        url: "http://localhost:8080/zd_project_war/user/login",
         data: formData
     }).then(function (resp) {
         // 登录成功
         if (resp.data == "login_success") {
-            location.href = "http://localhost:8080/zd-project/brand.html";
+            location.href = "http://localhost:8080/zd_project_war/brand.html";
         }
 
         // 登录失败
         if (resp.data == "login_failed") {
+            document.getElementById("registerSuccessMsg").style.display = 'none';
             document.getElementById("loginErrorMsg").style.display = '';
         }
     })
