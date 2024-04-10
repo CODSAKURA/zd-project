@@ -7,20 +7,19 @@
         <!--JPA的实现方式：Hibernate-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!--指定哪些Pojo类需要映射到数据库表-->
-        <class>pojo.User</class>
+        <!-- 扫描并映射pojo包中的所有类 -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
             <!--数据库连接信息-->
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db1?characterEncoding=UTF-8"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="1234"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/zd_project?currentSchema=public&amp;useSSL=false&amp;useServerPrepStmts=true"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="zdzfl001183"/>
 
             <!--Hibernate独有的配置信息-->
-           <property name="hibernate.show_sql" value="true"/>
-           <property name="hibernate.hbm2ddl.auto" value="update"/>
-           <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57InnoDBDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
         </properties>
     </persistence-unit>
 </persistence>
