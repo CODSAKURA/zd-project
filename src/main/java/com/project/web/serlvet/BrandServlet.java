@@ -1,11 +1,16 @@
 package com.project.web.serlvet;
 
 import com.alibaba.fastjson.JSON;
+import com.project.config.SpringConfig;
 import com.project.pojo.Brand;
 import com.project.pojo.PageBean;
 import com.project.service.BrandService;
+import com.project.service.UserService;
 import com.project.service.impl.BrandServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +20,18 @@ import java.io.IOException;
 
 @WebServlet("/brand/*")
 public class BrandServlet extends BaseServlet {
-    private BrandService brandService = new BrandServiceImpl();
+    //统一：创建userService对象
+    private BrandService brandService;
+
+    /**
+     * servlet类是由servlet容器管理，而不是spring容器，所以如果想在自定义servlet类中使用bean来注入类，单纯这样是不行的。
+     * 需要重写init()方法，在servlet初始化时给它充填带注解的bean实例。
+     */
+    @PostConstruct
+    public void init(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        brandService = applicationContext.getBean(BrandService.class);
+    }
 
     public void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 获取JSON请求体数据

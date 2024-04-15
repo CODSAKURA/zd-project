@@ -1,11 +1,12 @@
 package com.project;
 
 import com.project.config.SpringConfig;
-import com.project.service.UserService;
 import com.project.web.serlvet.UserServlet;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import javax.persistence.EntityManagerFactory;
 
 public class IocContainerTest {
     /**
@@ -28,6 +29,16 @@ public class IocContainerTest {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
         UserServlet userServlet = applicationContext.getBean(UserServlet.class);
         System.out.println(userServlet);
+    }
+
+    /**
+     * 此测试方法从容器中获取特定的bean并打印出来
+     */
+    @Test
+    public void testIocContainerForEntityManager() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        EntityManagerFactory entityManagerFactory = applicationContext.getBean(EntityManagerFactory.class);
+        System.out.println(entityManagerFactory);
     }
 
 }

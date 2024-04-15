@@ -1,25 +1,31 @@
 package com.project.service.impl;
 
+import com.project.config.SpringConfig;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.project.pojo.Brand;
 import com.project.pojo.PageBean;
 import com.project.pojo.QBrand;
 import com.project.service.BrandService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
+@Repository
+@Scope("prototype")
 public class BrandServiceImpl implements BrandService {
-    private static EntityManagerFactory emf;
     private static EntityManager em;
-    private static JPAQueryFactory queryFactory;
 
-    static {
-        emf = Persistence.createEntityManagerFactory("hibernateJPA");
-        em = emf.createEntityManager();
-        queryFactory = new JPAQueryFactory(em);
+    @PostConstruct
+    public void init(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        EntityManagerFactory entityManagerFactory = applicationContext.getBean(EntityManagerFactory.class);
+        em = entityManagerFactory.createEntityManager();
     }
 
 
@@ -57,6 +63,7 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public PageBean<Brand> selectByPageAndCondition(int currentPage, int pageSize, Brand brand) {
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         QBrand qBrand = QBrand.brand;
         long totalCount = queryFactory.selectFrom(qBrand)
                 .where(qBrand.brandName.like("%" + brand.getBrandName() + "%")).fetchCount();

@@ -2,13 +2,14 @@ package com.project.web.serlvet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.project.config.SpringConfig;
 import com.project.pojo.User;
 import com.project.service.UserService;
-import com.project.service.impl.UserServiceImpl;
 import com.project.util.CheckCodeUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -19,12 +20,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Map;
 
-@Service
 @WebServlet("/user/*")
 public class UserServlet extends BaseServlet {
-    @Autowired
     //统一：创建userService对象
-    private UserService userService;// FIXME：Spring注入失败，无法注入UserService对象
+    private UserService userService;
+
+    /**
+     * servlet类是由servlet容器管理，而不是spring容器，所以如果想在自定义servlet类中使用bean来注入类，单纯这样是不行的。
+     * 需要重写init()方法，在servlet初始化时给它充填带注解的bean实例。
+     */
+    @PostConstruct
+    public void init(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        userService = applicationContext.getBean(UserService.class);
+    }
 
     public void checkCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 创建Session
