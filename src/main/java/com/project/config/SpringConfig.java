@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 @ComponentScan("com.project")
 @EnableTransactionManagement
 public class SpringConfig {
+    // 数据源配置
     @Bean
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
@@ -27,6 +28,7 @@ public class SpringConfig {
         return dataSource;
     }
 
+    // 实体管理器工厂配置
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
@@ -41,6 +43,7 @@ public class SpringConfig {
         return factory;
     }
 
+    // 事务管理器配置
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager txManager = new JpaTransactionManager();
