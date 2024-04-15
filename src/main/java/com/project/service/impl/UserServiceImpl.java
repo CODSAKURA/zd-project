@@ -5,12 +5,14 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.project.pojo.QUser;
 import com.project.pojo.User;
 import com.project.service.UserService;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 
+@Repository
 public class UserServiceImpl implements UserService {
     private static EntityManagerFactory emf;
     private static EntityManager em;

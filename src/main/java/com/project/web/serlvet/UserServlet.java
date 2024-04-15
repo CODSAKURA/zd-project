@@ -6,6 +6,9 @@ import com.project.pojo.User;
 import com.project.service.UserService;
 import com.project.service.impl.UserServiceImpl;
 import com.project.util.CheckCodeUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +19,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Map;
 
+@Service
 @WebServlet("/user/*")
 public class UserServlet extends BaseServlet {
+    @Autowired
     //统一：创建userService对象
-    private UserService userService = new UserServiceImpl();
+    private UserService userService;// FIXME：Spring注入失败，无法注入UserService对象
 
     public void checkCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 创建Session
