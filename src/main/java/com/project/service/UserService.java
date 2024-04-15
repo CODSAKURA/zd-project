@@ -1,6 +1,6 @@
-package service;
+package com.project.service;
 
-import pojo.User;
+import com.project.pojo.User;
 
 public interface UserService {
 

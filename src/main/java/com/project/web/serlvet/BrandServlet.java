@@ -1,10 +1,10 @@
-package web.serlvet;
+package com.project.web.serlvet;
 
 import com.alibaba.fastjson.JSON;
-import pojo.Brand;
-import pojo.PageBean;
-import service.BrandService;
-import service.impl.BrandServiceImpl;
+import com.project.pojo.Brand;
+import com.project.pojo.PageBean;
+import com.project.service.BrandService;
+import com.project.service.impl.BrandServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

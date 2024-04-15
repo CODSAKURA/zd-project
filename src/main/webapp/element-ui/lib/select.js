@@ -192,7 +192,7 @@ function normalizeComponent (
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/util");
+module.exports = require("element-ui/lib/utils/com.project.util");
 
 /***/ }),
 /* 4 */
@@ -334,7 +334,7 @@ render._withStripped = true
 var emitter_ = __webpack_require__(4);
 var emitter_default = /*#__PURE__*/__webpack_require__.n(emitter_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/select/src/option.vue?vue&type=script&lang=js&
@@ -1222,7 +1222,7 @@ var lib_locale_ = __webpack_require__(19);
 var scroll_into_view_ = __webpack_require__(31);
 var scroll_into_view_default = /*#__PURE__*/__webpack_require__.n(scroll_into_view_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./packages/select/src/navigation-mixin.js

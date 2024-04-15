@@ -47,7 +47,7 @@
 <script>
   import ElCollapseTransition from 'element-ui/src/transitions/collapse-transition';
   import Emitter from 'element-ui/src/mixins/emitter';
-  import { generateId } from 'element-ui/src/utils/util';
+  import { generateId } from 'element-ui/src/utils/com.project.util';
 
   export default {
     name: 'ElCollapseItem',

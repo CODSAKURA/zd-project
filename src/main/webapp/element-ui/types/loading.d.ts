@@ -1,6 +1,6 @@
 import Vue, { VNodeDirective, PluginObject } from 'vue'
 
-/** Options used in Loading service */
+/** Options used in Loading com.project.service */
 export interface LoadingServiceOptions {
   /** The DOM node Loading needs to cover. Accepts a DOM object or a string. If it's a string, it will be passed to `document.querySelector` to get the corresponding DOM node */
   target?: HTMLElement | string
@@ -48,7 +48,7 @@ export interface ElLoading {
   /** Install Loading directive into Vue */
   install (vue: typeof Vue): void
 
-  /** If you do not have a specific DOM node to attach the Loading directive, or if you simply prefer not to use Loading as a directive, you can call this service with some configs to open a Loading instance. */
+  /** If you do not have a specific DOM node to attach the Loading directive, or if you simply prefer not to use Loading as a directive, you can call this com.project.service with some configs to open a Loading instance. */
   service (options: LoadingServiceOptions): ElLoadingComponent
 
   directive: PluginObject<never>
@@ -56,7 +56,7 @@ export interface ElLoading {
 
 declare module 'vue/types/vue' {
   interface Vue {
-    /** If you do not have a specific DOM node to attach the Loading directive, or if you simply prefer not to use Loading as a directive, you can call this service with some configs to open a Loading instance. */
+    /** If you do not have a specific DOM node to attach the Loading directive, or if you simply prefer not to use Loading as a directive, you can call this com.project.service with some configs to open a Loading instance. */
     $loading (options: LoadingServiceOptions): ElLoadingComponent
   }
 }

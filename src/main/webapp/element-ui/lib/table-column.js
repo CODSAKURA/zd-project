@@ -93,7 +93,7 @@ module.exports =
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./packages/table/src/config.js
@@ -271,7 +271,7 @@ function treeCellPrefix(h, _ref8) {
   }
   return ele;
 }
-// EXTERNAL MODULE: ./packages/table/src/util.js
+// EXTERNAL MODULE: ./packages/table/src/com.project.util.js
 var util = __webpack_require__(8);
 
 // EXTERNAL MODULE: external "element-ui/lib/checkbox"
@@ -626,7 +626,7 @@ module.exports = require("element-ui/lib/checkbox");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/util");
+module.exports = require("element-ui/lib/utils/com.project.util");
 
 /***/ }),
 

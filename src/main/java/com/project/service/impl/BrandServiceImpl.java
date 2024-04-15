@@ -1,10 +1,10 @@
-package service.impl;
+package com.project.service.impl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import pojo.Brand;
-import pojo.PageBean;
-import pojo.QBrand;
-import service.BrandService;
+import com.project.pojo.Brand;
+import com.project.pojo.PageBean;
+import com.project.pojo.QBrand;
+import com.project.service.BrandService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

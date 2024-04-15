@@ -1,10 +1,10 @@
-package service.impl;
+package com.project.service.impl;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import pojo.QUser;
-import pojo.User;
-import service.UserService;
+import com.project.pojo.QUser;
+import com.project.pojo.User;
+import com.project.service.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

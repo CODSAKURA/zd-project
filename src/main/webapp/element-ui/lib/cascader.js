@@ -255,7 +255,7 @@ module.exports = require("element-ui/lib/utils/shared");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/util");
+module.exports = require("element-ui/lib/utils/com.project.util");
 
 /***/ }),
 
@@ -656,7 +656,7 @@ var aria_utils_default = /*#__PURE__*/__webpack_require__.n(aria_utils_);
 // EXTERNAL MODULE: external "element-ui/lib/locale"
 var lib_locale_ = __webpack_require__(19);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(3);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/types"

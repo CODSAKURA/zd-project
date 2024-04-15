@@ -229,7 +229,7 @@ var button_default = /*#__PURE__*/__webpack_require__.n(button_);
 var button_group_ = __webpack_require__(36);
 var button_group_default = /*#__PURE__*/__webpack_require__.n(button_group_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/dropdown/src/dropdown.vue?vue&type=script&lang=js&
@@ -601,7 +601,7 @@ module.exports = require("element-ui/lib/button");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/util");
+module.exports = require("element-ui/lib/utils/com.project.util");
 
 /***/ }),
 

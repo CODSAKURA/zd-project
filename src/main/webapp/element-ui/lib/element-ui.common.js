@@ -89,7 +89,7 @@ module.exports =
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/date-util");
+module.exports = require("element-ui/lib/utils/date-com.project.util");
 
 /***/ }),
 /* 1 */
@@ -101,7 +101,7 @@ module.exports = require("element-ui/lib/utils/dom");
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/util");
+module.exports = require("element-ui/lib/utils/com.project.util");
 
 /***/ }),
 /* 3 */
@@ -747,7 +747,7 @@ var input_default = /*#__PURE__*/__webpack_require__.n(input_);
 var locale_ = __webpack_require__(4);
 var locale_default = /*#__PURE__*/__webpack_require__.n(locale_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./packages/pagination/src/pagination.js
@@ -9980,7 +9980,7 @@ var mousewheel_mousewheel = function mousewheel(element, callback) {
 var external_vue_ = __webpack_require__(6);
 var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
 
-// CONCATENATED MODULE: ./packages/table/src/util.js
+// CONCATENATED MODULE: ./packages/table/src/com.project.util.js
 var util_typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -14680,7 +14680,7 @@ pickervue_type_template_id_79ae069f_render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/picker.vue?vue&type=template&id=79ae069f&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
 var date_util_ = __webpack_require__(0);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/date-picker/src/picker.vue?vue&type=script&lang=js&
@@ -24630,7 +24630,7 @@ treevue_type_template_id_547575a6_render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/tree/src/tree.vue?vue&type=template&id=547575a6&
 
-// CONCATENATED MODULE: ./packages/tree/src/model/util.js
+// CONCATENATED MODULE: ./packages/tree/src/model/com.project.util.js
 var NODE_KEY = '$treeNodeId';
 
 var markNodeData = function markNodeData(node, data) {
@@ -32174,7 +32174,7 @@ carousel_src_main.install = function (Vue) {
 };
 
 /* harmony default export */ var carousel = (carousel_src_main);
-// CONCATENATED MODULE: ./packages/scrollbar/src/util.js
+// CONCATENATED MODULE: ./packages/scrollbar/src/com.project.util.js
 var BAR_MAP = {
   vertical: {
     offset: 'offsetHeight',

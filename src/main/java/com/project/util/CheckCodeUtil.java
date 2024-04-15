@@ -1,4 +1,4 @@
-package util;
+package com.project.util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

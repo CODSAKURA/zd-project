@@ -382,7 +382,7 @@
 
   var config = ({
     /**
-     * Option merge strategies (used in core/util/options)
+     * Option merge strategies (used in core/com.project.util/options)
      */
     // $flow-disable-line
     optionMergeStrategies: Object.create(null),
@@ -5382,7 +5382,7 @@
     }
     Object.defineProperty(Vue, 'config', configDef);
 
-    // exposed util methods.
+    // exposed com.project.util methods.
     // NOTE: these are not considered part of the public API - avoid relying on
     // them unless you are aware of the risk.
     Vue.util = {
@@ -5441,7 +5441,7 @@
 
   /*  */
 
-  // these are reserved for web because they are directly compiled away
+  // these are reserved for com.project.web because they are directly compiled away
   // during template compilation
   var isReservedAttr = makeMap('style,class');
 
@@ -7655,7 +7655,7 @@
     }
   }
 
-  // check platforms/web/util/attrs.js acceptValue
+  // check platforms/com.project.web/com.project.util/attrs.js acceptValue
 
 
   function shouldUpdateValue (elm, checkVal) {

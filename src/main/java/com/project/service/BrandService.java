@@ -1,7 +1,7 @@
-package service;
+package com.project.service;
 
-import pojo.Brand;
-import pojo.PageBean;
+import com.project.pojo.Brand;
+import com.project.pojo.PageBean;
 
 public interface BrandService {
 

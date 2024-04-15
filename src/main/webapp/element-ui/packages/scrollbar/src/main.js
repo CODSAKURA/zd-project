@@ -2,7 +2,7 @@
 
 import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
 import scrollbarWidth from 'element-ui/src/utils/scrollbar-width';
-import { toObject } from 'element-ui/src/utils/util';
+import { toObject } from 'element-ui/src/utils/com.project.util';
 import Bar from './bar';
 
 /* istanbul ignore next */

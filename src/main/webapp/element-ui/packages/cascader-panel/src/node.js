@@ -1,4 +1,4 @@
-import { isEqual, capitalize } from 'element-ui/src/utils/util';
+import { isEqual, capitalize } from 'element-ui/src/utils/com.project.util';
 import { isDef } from 'element-ui/src/utils/shared';
 
 let uid = 0;

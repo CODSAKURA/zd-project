@@ -1,4 +1,4 @@
-import { kebabCase } from 'element-ui/src/utils/util';
+import { kebabCase } from 'element-ui/src/utils/com.project.util';
 /**
  * Show migrating guide in browser console.
  *

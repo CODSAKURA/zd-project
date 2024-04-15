@@ -1,11 +1,11 @@
-package web.serlvet;
+package com.project.web.serlvet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import pojo.User;
-import service.UserService;
-import service.impl.UserServiceImpl;
-import util.CheckCodeUtil;
+import com.project.pojo.User;
+import com.project.service.UserService;
+import com.project.service.impl.UserServiceImpl;
+import com.project.util.CheckCodeUtil;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;

@@ -100,13 +100,13 @@ var resize_event_ = __webpack_require__(16);
 var scrollbar_width_ = __webpack_require__(39);
 var scrollbar_width_default = /*#__PURE__*/__webpack_require__.n(scrollbar_width_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
 var util_ = __webpack_require__(3);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/dom"
 var dom_ = __webpack_require__(2);
 
-// CONCATENATED MODULE: ./packages/scrollbar/src/util.js
+// CONCATENATED MODULE: ./packages/scrollbar/src/com.project.util.js
 var BAR_MAP = {
   vertical: {
     offset: 'offsetHeight',
@@ -408,7 +408,7 @@ module.exports = require("element-ui/lib/utils/dom");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/util");
+module.exports = require("element-ui/lib/utils/com.project.util");
 
 /***/ }),
 

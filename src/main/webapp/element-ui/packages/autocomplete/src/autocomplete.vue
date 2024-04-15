@@ -63,7 +63,7 @@
   import ElAutocompleteSuggestions from './autocomplete-suggestions.vue';
   import Emitter from 'element-ui/src/mixins/emitter';
   import Migrating from 'element-ui/src/mixins/migrating';
-  import { generateId } from 'element-ui/src/utils/util';
+  import { generateId } from 'element-ui/src/utils/com.project.util';
   import Focus from 'element-ui/src/mixins/focus';
 
   export default {

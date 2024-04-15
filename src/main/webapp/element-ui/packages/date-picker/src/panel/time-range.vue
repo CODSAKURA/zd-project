@@ -62,7 +62,7 @@
     modifyDate,
     clearMilliseconds,
     timeWithinRange
-  } from 'element-ui/src/utils/date-util';
+  } from 'element-ui/src/utils/date-com.project.util';
   import Locale from 'element-ui/src/mixins/locale';
   import TimeSpinner from '../basic/time-spinner';
 
