@@ -2,6 +2,7 @@ package com.project;
 
 import com.project.config.SpringConfig;
 import com.project.service.UserService;
+import com.project.web.serlvet.UserServlet;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,6 +18,16 @@ public class IocContainerTest {
         for (String bean : beanCollector) {
             System.out.println(bean);
         }
+    }
+
+    /**
+     * 此测试方法从容器中获取特定的bean并打印出来
+     */
+    @Test
+    public void testIocContainerForUserServlet() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        UserServlet userServlet = applicationContext.getBean(UserServlet.class);
+        System.out.println(userServlet);
     }
 
 }
