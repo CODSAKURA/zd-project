@@ -19,17 +19,6 @@ public class CheckCodeUtil {
     public static final String VERIFY_CODES = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static Random random = new Random();
 
-
-    /**
-     * 测试代码
-     */
-    public static void main(String[] args) throws Exception {
-        OutputStream fos = new FileOutputStream("C://Users//92174//Pictures//Background//a.png");
-        String checkcode = CheckCodeUtil.outputVerifyImage(100, 50, fos, 4);
-
-        System.out.println(checkcode);
-    }
-
     /**
      * 输出随机验证码图片流,并返回验证码值（一般传入输出流，响应response页面端，Web项目用的较多）
      *
@@ -76,24 +65,6 @@ public class CheckCodeUtil {
         }
         return verifyCode.toString();
     }
-
-    /**
-     * 生成随机验证码文件,并返回验证码值 (生成图片形式，用的较少)
-     *
-     * @param w
-     * @param h
-     * @param outputFile
-     * @param verifySize
-     * @return
-     * @throws IOException
-     */
-    public static String outputVerifyImage(int w, int h, File outputFile, int verifySize) throws IOException {
-        String verifyCode = generateVerifyCode(verifySize);
-        outputImage(w, h, outputFile, verifyCode);
-        return verifyCode;
-    }
-
-
 
     /**
      * 生成指定验证码图像文件
