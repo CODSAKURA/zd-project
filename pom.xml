@@ -80,6 +80,13 @@
             <version>4.13</version>
             <scope>test</scope>
         </dependency>
+
+        <!--导入Spring测试的依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.2.10.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <!--Tomcat以及Q类生成插件-->
