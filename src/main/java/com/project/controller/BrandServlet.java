@@ -1,12 +1,10 @@
-package com.project.web.serlvet;
+package com.project.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.project.config.SpringConfig;
 import com.project.pojo.Brand;
 import com.project.pojo.PageBean;
 import com.project.service.BrandService;
-import com.project.service.UserService;
-import com.project.service.impl.BrandServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

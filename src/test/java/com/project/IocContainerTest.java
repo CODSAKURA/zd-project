@@ -1,7 +1,7 @@
 package com.project;
 
 import com.project.config.SpringConfig;
-import com.project.web.serlvet.UserServlet;
+import com.project.controller.UserServlet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
