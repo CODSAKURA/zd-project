@@ -1,30 +1,19 @@
 package com.project.service.impl;
 
-import com.project.config.SpringConfig;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.project.pojo.QUser;
 import com.project.pojo.User;
 import com.project.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.PostConstruct;
 import javax.persistence.*;
 
 @Repository
 @Scope("prototype")
 public class UserServiceImpl implements UserService {
-    private static EntityManager em;
-
-    @PostConstruct
-    public void init(){
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        EntityManagerFactory entityManagerFactory = applicationContext.getBean(EntityManagerFactory.class);
-        em = entityManagerFactory.createEntityManager();
-    }
+    @PersistenceContext
+    private EntityManager em;
 
     /**
      * 登录方法（检测用户是否存在）
