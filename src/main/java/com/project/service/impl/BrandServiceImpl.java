@@ -20,7 +20,6 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * 增加品牌
-     * @param brand
      */
     @Override
     public void add(Brand brand) {
@@ -31,7 +30,6 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * 删除特定id的品牌
-     * @param id
      */
     @Override
     public void delete(int id) {
@@ -43,7 +41,6 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * 更新特定品牌
-     * @param brand
      */
     @Override
     public void update(Brand brand) {
@@ -54,7 +51,6 @@ public class BrandServiceImpl implements BrandService {
 
     /**
      * 删除特定id的品牌
-     * @param ids
      */
     @Override
     public void deleteByIds(int[] ids) {
