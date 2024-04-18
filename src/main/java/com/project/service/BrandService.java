@@ -2,7 +2,9 @@ package com.project.service;
 
 import com.project.pojo.Brand;
 import com.project.pojo.PageBean;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface BrandService {
 
     /**

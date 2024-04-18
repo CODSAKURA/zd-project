@@ -23,9 +23,7 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public void add(Brand brand) {
-        em.getTransaction().begin();
         em.persist(brand);
-        em.getTransaction().commit();
     }
 
     /**
@@ -34,9 +32,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public void delete(int id) {
         Brand brand = em.find(Brand.class, id);
-        em.getTransaction().begin();
         em.remove(brand);
-        em.getTransaction().commit();
     }
 
     /**
@@ -44,9 +40,7 @@ public class BrandServiceImpl implements BrandService {
      */
     @Override
     public void update(Brand brand) {
-        em.getTransaction().begin();
         em.merge(brand);
-        em.getTransaction().commit();
     }
 
     /**

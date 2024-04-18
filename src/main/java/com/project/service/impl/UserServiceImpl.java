@@ -31,9 +31,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void register(User user) {
-        em.getTransaction().begin();
         em.persist(user);
-        em.getTransaction().commit();
     }
 
     /**
