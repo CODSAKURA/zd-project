@@ -76,11 +76,11 @@ public class Brand {
     }
 
     // 逻辑视图
-    public String getStatusStr(){
-        if (status == null){
+    public String getStatusStr() {
+        if (status == null) {
             return "未知";
         }
-        return status == 0 ? "禁用":"启用";
+        return status == 0 ? "禁用" : "启用";
     }
 
     public void setStatus(Integer status) {
@@ -89,13 +89,10 @@ public class Brand {
 
     @Override
     public String toString() {
-        return "Brand{" +
-                "id=" + id +
-                ", brandName='" + brandName + '\'' +
+        return "brandName='" + brandName + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", ordered=" + ordered +
                 ", description='" + description + '\'' +
-                ", status=" + status +
-                '}';
+                ", status=" + status;
     }
 }
