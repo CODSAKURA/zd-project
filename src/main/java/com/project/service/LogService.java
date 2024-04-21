@@ -4,11 +4,9 @@ import com.project.pojo.Log;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public interface LogService {
 
     // 插入日志
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     void saveLog(Log log);
 }

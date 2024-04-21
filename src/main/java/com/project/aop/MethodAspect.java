@@ -28,7 +28,7 @@ public class MethodAspect {
         try {
             result = pjp.proceed();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
         } finally {
             logInsert(pjp);
         }
