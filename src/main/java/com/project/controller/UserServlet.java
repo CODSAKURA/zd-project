@@ -5,7 +5,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.project.config.SpringConfig;
 import com.project.pojo.User;
 import com.project.service.UserService;
-import com.project.util.CheckCodeUtil;
+import com.project.util.CheckCodeUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -41,7 +41,7 @@ public class UserServlet extends BaseServlet {
 
         // 生成验证码
         ServletOutputStream os = response.getOutputStream();
-        String checkCode = CheckCodeUtil.outputVerifyImage(100, 50, os, 4);
+        String checkCode = CheckCodeUtils.outputVerifyImage(100, 50, os, 4);
 
         // 将验证码存在Session中
         session.setAttribute("checkCodeGen", checkCode);
