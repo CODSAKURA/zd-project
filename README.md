@@ -11,9 +11,10 @@
 
 ### 后端：
 
-- Java 19 版本
+- Java 1.8 版本
 - Maven 3.6.1 版本
 - Spring Framework 5.3.8 版本
+- Spring MVC 5.3.13 版本
 - Servlet 3.1.0 版本
 
 ### 服务器：
@@ -41,7 +42,8 @@
 
 ## 后期计划
 
-- 引入Spring MVC技术。
+- 编写Brand类接口
+- 将User类和Brand类的接口Restful API化
 
 ## 未来计划
 

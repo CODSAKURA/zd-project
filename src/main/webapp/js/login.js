@@ -34,7 +34,7 @@ function handleSubmit() {
     }).then(function (resp) {
         // 登录成功
         if (resp.data == "login_success") {
-            location.href = "http://localhost:8080/zd_project_war/brand.html";
+            location.href = "../pages/brand.html";
         }
 
         // 登录失败

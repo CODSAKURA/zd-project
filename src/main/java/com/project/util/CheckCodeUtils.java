@@ -1,5 +1,7 @@
 package com.project.util;
 
+import org.springframework.stereotype.Component;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -14,6 +16,7 @@ import java.util.Random;
 /**
  * 生成验证码工具类
  */
+@Component
 public class CheckCodeUtils {
 
     public static final String VERIFY_CODES = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";

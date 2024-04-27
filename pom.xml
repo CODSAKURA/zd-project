@@ -16,12 +16,26 @@
     </properties>
 
     <dependencies>
-        <!--导入 Spring MVC相关的依赖（Servlet）-->
+        <!--导入Spring MVC的依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.13</version>
+        </dependency>
+
+        <!--导入Spring MVC相关的依赖（Servlet）-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!--导入Spring MVC相关的依赖（jackson）-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.0</version>
         </dependency>
 
         <!--导入Spring Framework的依赖-->
@@ -59,6 +73,13 @@
             <version>4.4.0</version>
         </dependency>
 
+        <!--导入Spring Framework Test的依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.2.10.RELEASE</version>
+        </dependency>
+
         <!--导入PostgreSQL驱动的依赖-->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -73,26 +94,12 @@
             <version>1.2.8</version>
         </dependency>
 
-        <!--导入Fastjson的依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.62</version>
-        </dependency>
-
         <!--导入junit4的依赖-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13</version>
             <scope>test</scope>
-        </dependency>
-
-        <!--导入Spring Test的依赖-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>5.2.10.RELEASE</version>
         </dependency>
     </dependencies>
 

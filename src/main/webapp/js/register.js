@@ -29,7 +29,7 @@ function checkUserValid() {
     }
 
     //检查用户名是否已存在
-    axios.post("http://localhost:8080/zd_project_war/user/selectUser", "username=" + username).then(function (resp) {
+    axios.get("http://localhost:8080/zd_project_war/user/selectUser?username=" + username).then(function (resp) {
         //用户名不存在
         if (resp.data == false) {
             document.getElementById("username_err").style.display = 'none'; //不展示
@@ -106,7 +106,7 @@ function handleSubmit() {
                 sessionStorage.setItem("register_success", "register_success");
 
                 // 打开login页面
-                window.open("http://localhost:8080/zd_project_war/login.html");
+                window.open("http://localhost:8080/zd_project_war/pages/login.html");
             }
 
             // 注册失败
