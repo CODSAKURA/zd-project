@@ -4,23 +4,26 @@ import com.project.pojo.Brand;
 import com.project.pojo.PageBean;
 import com.project.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/brand")// TODO 需要分析接口的合理性
+/**
+ * 品牌类（Rest风格）
+ * @author : 周迪
+ * @date : 2024/04/28
+ */
+@RestController
+@RequestMapping("/brands")
 public class BrandController {
     @Autowired
     private BrandService brandService;
 
     /**
      * 分页查询
+     * FIXME 筛选的分页查询不起作用
      */
-    @RequestMapping("/selectByPageAndCondition")
-    @ResponseBody
-    public PageBean<Brand> selectByPageAndCondition(Integer currentPage, Integer pageSize, @RequestBody Brand brand) {
+    @GetMapping("/pages/{currentPage}/pageSize/{pageSize}/brand")
+    public PageBean<Brand> selectByPageAndCondition(@PathVariable Integer currentPage,
+                                                    @PathVariable Integer pageSize, Brand brand) {
         // 调用方法
         PageBean<Brand> pageBean = brandService.selectByPageAndCondition(currentPage, pageSize, brand);
 
@@ -31,8 +34,7 @@ public class BrandController {
     /**
      * 添加品牌
      */
-    @RequestMapping("/add")
-    @ResponseBody
+    @PostMapping
     public String add(@RequestBody Brand brand) {
         // 调用方法
         brandService.add(brand);
@@ -44,8 +46,7 @@ public class BrandController {
     /**
      * 更新品牌
      */
-    @RequestMapping("/update")
-    @ResponseBody
+    @PostMapping("/update")
     public String update(@RequestBody Brand brand) {
         // 调用方法
         brandService.update(brand);
@@ -57,8 +58,7 @@ public class BrandController {
     /**
      * 删除特定品牌
      */
-    @RequestMapping("/delete")
-    @ResponseBody
+    @PostMapping("/delete")
     public String delete(@RequestBody Brand brand) {
         // 如Brand为空，则返回错误信息
         if (brand == null) {
@@ -78,8 +78,7 @@ public class BrandController {
     /**
      * 批量删除品牌
      */
-    @RequestMapping("/deleteByIds")
-    @ResponseBody
+    @PostMapping("/deleteByIds")
     public String deleteByIds(@RequestBody int[] ids){
         // 调用方法
         brandService.deleteByIds(ids);

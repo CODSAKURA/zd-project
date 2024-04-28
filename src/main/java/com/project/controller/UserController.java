@@ -4,10 +4,7 @@ import com.project.pojo.User;
 import com.project.service.UserService;
 import com.project.util.CheckCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +13,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
-@Controller
-@RequestMapping("/user")// TODO 需要分析接口的合理性
+/**
+ * 用户类（Rest风格）
+ * @author : 周迪
+ * @date : 2024/04/28
+ */
+@RestController
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     private CheckCodeUtils checkCodeUtils;
@@ -28,7 +30,7 @@ public class UserController {
     /**
      * 生成验证码
      */
-    @RequestMapping("/checkCode")
+    @GetMapping("/checkCode")
     public void checkCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 创建Session
         HttpSession session = request.getSession();
@@ -44,11 +46,10 @@ public class UserController {
     /**
      * 用户登录
      */
-    @RequestMapping("/login")
-    @ResponseBody
-    public String login(@RequestBody User user, HttpServletRequest request) throws IOException {
+    @GetMapping("/username/{username}/password/{password}")
+    public String login(@PathVariable String username, @PathVariable String password, HttpServletRequest request){
         // 获取用户信息
-        User userTest = userService.login(user.getUsername(), user.getPassword());
+        User userTest = userService.login(username, password);
 
         // 用户不存在，登录失败
         if(userTest == null){
@@ -64,8 +65,7 @@ public class UserController {
     /**
      * 用户注册
      */
-    @RequestMapping("/register")
-    @ResponseBody
+    @PostMapping
     public String register(@RequestBody Map<String, Object> parameters, HttpServletRequest request) throws IOException {
         // 获取输入的验证码
         String code = (String) parameters.get("code");
@@ -99,9 +99,8 @@ public class UserController {
     /**
      * 检查用户名是否存在
      */
-    @RequestMapping("/selectUser")
-    @ResponseBody
-    public String selectUser(String username){
+    @GetMapping("/{username}")
+    public String selectUser(@PathVariable String username){
         //调用方法
         boolean flag = userService.checkUserExist(username);
 

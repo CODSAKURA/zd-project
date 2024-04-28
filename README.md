@@ -42,8 +42,8 @@
 
 ## 后期计划
 
-- 编写Brand类接口
-- 将User类和Brand类的接口Restful API化
+- 修复目前已知的BUG
+- 继续完善SpringMVC的功能
 
 ## 未来计划
 

@@ -1,6 +1,6 @@
 function on() {
     //浏览器会自动缓存下一张图片，从而导致无论怎么刷新也都会刷新不出来新的图片，所以得在链接后面加不同的数据来表示不同的网页链接
-    document.getElementById("checkCodeImage").src = "/zd_project_war/user/checkCode?" + new Date().getMilliseconds();
+    document.getElementById("checkCodeImage").src = "/zd_project_war/users/checkCode?" + new Date().getMilliseconds();
 }
 
 function checkUserValid() {
@@ -29,7 +29,7 @@ function checkUserValid() {
     }
 
     //检查用户名是否已存在
-    axios.get("http://localhost:8080/zd_project_war/user/selectUser?username=" + username).then(function (resp) {
+    axios.get("http://localhost:8080/zd_project_war/users/" + username).then(function (resp) {
         //用户名不存在
         if (resp.data == false) {
             document.getElementById("username_err").style.display = 'none'; //不展示
@@ -97,7 +97,7 @@ function handleSubmit() {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/zd_project_war/user/register",
+            url: "http://localhost:8080/zd_project_war/users",
             data: formData
         }).then(function (resp) {
             // 注册成功

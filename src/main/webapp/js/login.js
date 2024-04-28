@@ -19,18 +19,9 @@ function handleSubmit() {
     var passwordInput = document.getElementById("password");
     var password = passwordInput.value.trim();
 
-    var formData = {
-        username: "",
-        password: ""
-    };
-
-    formData.username = username;
-    formData.password = password;
-
     axios({
-        method: "POST",
-        url: "http://localhost:8080/zd_project_war/user/login",
-        data: formData
+        method: "GET",
+        url: "http://localhost:8080/zd_project_war/users/username/" + username + "/password/" + password
     }).then(function (resp) {
         // 登录成功
         if (resp.data == "login_success") {
