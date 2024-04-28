@@ -34,7 +34,7 @@ new Vue({
         },
 
         editDialogVisible:false,
-        dialogVisible: false,
+        dialogVisible: false, // TODO 新增按钮之后数据还是之前填的数据，需要重新初始化
         multipleSelection: [],
         tableData: [],
         currentPage: 1,

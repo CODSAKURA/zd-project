@@ -15,5 +15,6 @@ public class WebSupport extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
         registry.addResourceHandler("/imgs/**").addResourceLocations("/imgs/");
+        registry.addResourceHandler("/element-ui/**").addResourceLocations("/element-ui/");
     }
 }
