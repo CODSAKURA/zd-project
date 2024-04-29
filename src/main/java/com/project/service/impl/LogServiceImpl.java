@@ -9,6 +9,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.text.SimpleDateFormat;
 
+/**
+ * 服务层：记录类
+ * @author : 周迪
+ * @date : 2024/04/30
+ */
 @Repository
 @Scope("prototype")
 public class LogServiceImpl implements LogService {

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 品牌类（Rest风格）
+ * 控制层：品牌类（Rest风格）
  * @author : 周迪
  * @date : 2024/04/28
  */
@@ -18,8 +18,7 @@ public class BrandController {
     private BrandService brandService;
 
     /**
-     * 分页查询
-     * FIXME 筛选的分页查询不起作用
+     * 分页查询品牌
      */
     @GetMapping("/pages/{currentPage}/pageSize/{pageSize}/brand")
     public PageBean<Brand> selectByPageAndCondition(@PathVariable Integer currentPage,
@@ -27,7 +26,7 @@ public class BrandController {
         // 调用方法
         PageBean<Brand> pageBean = brandService.selectByPageAndCondition(currentPage, pageSize, brand);
 
-        // 向前端返回数据
+        // 返回数据
         return pageBean;
     }
 
@@ -45,6 +44,7 @@ public class BrandController {
 
     /**
      * 更新品牌
+     * FIXME 添加Apifox接口测试
      */
     @PostMapping("/update")
     public String update(@RequestBody Brand brand) {

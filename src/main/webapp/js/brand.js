@@ -129,9 +129,8 @@ new Vue({
             axios({
                 method: "GET",
                 url: "http://localhost:8080/zd_project_war/brands/pages/" + _this.currentPage + "/pageSize/"
-                    + _this.pageSize + "/brand?id=" + _this.searchBrand.id + "&brandName=" + _this.searchBrand.brandName
+                    + _this.pageSize + "/brand?brandName=" + _this.searchBrand.brandName
                     + "&companyName=" + _this.searchBrand.companyName + "&status=" + _this.searchBrand.status
-                    + "&ordered=" + _this.searchBrand.ordered + "&description=" + _this.searchBrand.description
             }).then(function (resp) {
                 _this.tableData = resp.data.row;
                 _this.totalCount = resp.data.totalCount;

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * 用户类（Rest风格）
+ * 控制层：用户类（Rest风格）
  * @author : 周迪
  * @date : 2024/04/28
  */

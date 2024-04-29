@@ -9,6 +9,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 import javax.persistence.*;
 
+/**
+ * 服务层：用户类
+ * @author : 周迪
+ * @date : 2024/04/30
+ */
 @Repository
 @Scope("prototype")
 public class UserServiceImpl implements UserService {
