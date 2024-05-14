@@ -9,24 +9,25 @@ public interface BrandService {
 
     /**
      * 增添数据
+     *
+     * @return
      */
-    void add(Brand brand);
+    boolean add(Brand brand);
 
     /**
      * 删除数据
      */
-    void delete(int id);
+    boolean delete(Brand brand);
 
     /**
      * 更新数据
      */
-    void update(Brand brand);
+    boolean update(Brand brand);
 
     /**
      * 批量删除
      */
-    void deleteByIds(int[] ids);
-
+    boolean deleteBatch(Brand[] brands);
 
     /**
      * 分页条件查询【currentPage（当前页码），pageSize（每页展示条数）,brand（查询的条件）】

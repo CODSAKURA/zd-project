@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import com.project.enums.BrandResponseCode;
+import com.project.frontend.FrontendResponseResult;
 import com.project.pojo.Brand;
 import com.project.pojo.PageBean;
 import com.project.service.BrandService;
@@ -18,72 +20,66 @@ public class BrandController {
     private BrandService brandService;
 
     /**
-     * 分页查询品牌
-     */
-    @GetMapping("/pages/{currentPage}/pageSize/{pageSize}/brand")
-    public PageBean<Brand> selectByPageAndCondition(@PathVariable Integer currentPage,
-                                                    @PathVariable Integer pageSize, Brand brand) {
-        // 调用方法
-        PageBean<Brand> pageBean = brandService.selectByPageAndCondition(currentPage, pageSize, brand);
-
-        // 返回数据
-        return pageBean;
-    }
-
-    /**
      * 添加品牌
      */
     @PostMapping
-    public String add(@RequestBody Brand brand) {
+    public FrontendResponseResult add(@RequestBody Brand brand) {
         // 调用方法
-        brandService.add(brand);
+        boolean flag = brandService.add(brand);
 
-        // 返回成功数据
-        return "success";
+        // 封装成FrontendResponseResult返回数据
+        return new FrontendResponseResult(flag ? BrandResponseCode.ADD_OK.getCode() : BrandResponseCode.ADD_ERROR.getCode());
     }
 
     /**
      * 更新品牌
-     * FIXME 添加Apifox接口测试
      */
     @PostMapping("/update")
-    public String update(@RequestBody Brand brand) {
+    public FrontendResponseResult update(@RequestBody Brand brand) {
         // 调用方法
-        brandService.update(brand);
+        boolean flag = brandService.update(brand);
 
-        // 返回成功数据
-        return "success";
+        // 封装成FrontendResponseResult返回数据
+        return new FrontendResponseResult(flag ? BrandResponseCode.UPDATE_OK.getCode() : BrandResponseCode.UPDATE_ERROR.getCode());
     }
 
     /**
      * 删除特定品牌
      */
     @PostMapping("/delete")
-    public String delete(@RequestBody Brand brand) {
-        // 如Brand为空，则返回错误信息
-        if (brand == null) {
-            return "Brand object is null";
-        }
-
-        // 获取当前Brand的id
-        Integer brandID = brand.getId();
-
+    public FrontendResponseResult delete(@RequestBody Brand brand) {
         // 调用方法
-        brandService.delete(brandID);
+        boolean flag = brandService.delete(brand);
 
-        //返回成功数据
-        return "success";
+        //封装成FrontendResponseResult返回数据
+        return new FrontendResponseResult(flag ? BrandResponseCode.DELETE_OK.getCode() : BrandResponseCode.DELETE_ERROR.getCode());
     }
 
     /**
      * 批量删除品牌
      */
-    @PostMapping("/deleteByIds")
-    public String deleteByIds(@RequestBody int[] ids){
+    @PostMapping("/deleteBatch")
+    public FrontendResponseResult deleteBatch(@RequestBody Brand[] brands){
         // 调用方法
-        brandService.deleteByIds(ids);
+        boolean flag = brandService.deleteBatch(brands);
 
-        //返回成功数据
-        return "success";
+        //封装成FrontendResponseResult返回数据
+        return new FrontendResponseResult(flag ? BrandResponseCode.DELETE_OK.getCode() : BrandResponseCode.DELETE_ERROR.getCode());
+    }
+
+    /**
+     * 分页查询品牌
+     */
+    @GetMapping("/pages/{currentPage}/pageSize/{pageSize}/brand")
+    public FrontendResponseResult selectByPageAndCondition(@PathVariable Integer currentPage,
+                                                           @PathVariable Integer pageSize, Brand brand) {
+        // 调用方法
+        PageBean<Brand> pageBean = brandService.selectByPageAndCondition(currentPage, pageSize, brand);
+
+        // 判断返回的数据是否为null
+        boolean flag = pageBean != null;
+
+        // 封装成FrontendResponseResult返回数据
+        return new FrontendResponseResult(pageBean, flag ? BrandResponseCode.SELECT_OK.getCode() : BrandResponseCode.SELECT_ERROR.getCode());
     }
 }

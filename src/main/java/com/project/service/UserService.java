@@ -2,15 +2,19 @@ package com.project.service;
 
 import com.project.pojo.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import java.util.Map;
 
 @Transactional
 public interface UserService {
 
-    User login(String username, String password);
+    boolean login(String username, String password, HttpServletRequest request);
 
-    void register(User user);
+    boolean register(Map<String, Object> parameters, HttpServletRequest request);
 
     boolean checkUserExist(String username);
 
+    boolean codeGenerate(HttpServletRequest request, HttpServletResponse response);
 }

@@ -1,6 +1,6 @@
 function on() {
     //浏览器会自动缓存下一张图片，从而导致无论怎么刷新也都会刷新不出来新的图片，所以得在链接后面加不同的数据来表示不同的网页链接
-    document.getElementById("checkCodeImage").src = "/zd_project_war/users/checkCode?" + new Date().getMilliseconds();
+    document.getElementById("codeGenerateImage").src = "/zd_project_war/users/codeGenerate?" + new Date().getMilliseconds();
 }
 
 function checkUserValid() {
@@ -31,12 +31,14 @@ function checkUserValid() {
     //检查用户名是否已存在
     axios.get("http://localhost:8080/zd_project_war/users/" + username).then(function (resp) {
         //用户名不存在
+        // TODO 更改获取后端数据方式
         if (resp.data == false) {
             document.getElementById("username_err").style.display = 'none'; //不展示
             document.getElementById("username_exist").style.display = 'none'; //不展示
         }
 
         //用户名已存在
+        // TODO 更改获取后端数据方式
         if (resp.data == true) {
             document.getElementById("username_err").style.display = 'none'; //不展示
             document.getElementById("username_exist").style.display = ''; //展示
@@ -82,7 +84,7 @@ function handleSubmit() {
         var passwordInput = document.getElementById("password");
         var password = passwordInput.value.trim();
 
-        var codeInput = document.getElementById("checkCode");
+        var codeInput = document.getElementById("codeGenerate");
         var code = codeInput.value.trim();
 
         var formData = {
@@ -101,6 +103,7 @@ function handleSubmit() {
             data: formData
         }).then(function (resp) {
             // 注册成功
+            // TODO 更改获取后端数据方式
             if (resp.data == "register_success") {
                 // 将数据存储到 sessionStorage 中
                 sessionStorage.setItem("register_success", "register_success");
@@ -110,6 +113,7 @@ function handleSubmit() {
             }
 
             // 注册失败
+            // TODO 更改获取后端数据方式
             if (resp.data == "register_failed") {
                 document.getElementById("registerFailedMsg").style.display = '';
             }
@@ -119,7 +123,7 @@ function handleSubmit() {
 
 // Event bindings
 document.getElementById("changeImg").onclick = on;
-document.getElementById("checkCodeImage").onclick = on;
+document.getElementById("codeGenerateImage").onclick = on;
 document.getElementById("username").onblur = checkUserValid;
 document.getElementById("password").onblur = checkPassword;
 document.getElementById("reg_btn").onclick = handleSubmit;

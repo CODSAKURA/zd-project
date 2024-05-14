@@ -137,7 +137,7 @@ input[type="button"]:active, input[type="submit"]:active {
     margin-right:50px; width: 285px; height: 45px; margin-top:20px;
 }
 
-#checkCode{
+#codeGenerate{
     width: 100px;
 }
 
