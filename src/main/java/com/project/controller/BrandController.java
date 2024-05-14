@@ -25,7 +25,7 @@ public class BrandController {
     @PostMapping
     public FrontendResponseResult add(@RequestBody Brand brand) {
         // 调用方法
-        boolean flag = brandService.add(brand);
+        boolean flag = brandService.addBrand(brand);
 
         // 封装成FrontendResponseResult返回数据
         return new FrontendResponseResult(flag ? BrandResponseCode.ADD_OK.getCode() : BrandResponseCode.ADD_ERROR.getCode());
@@ -37,7 +37,7 @@ public class BrandController {
     @PostMapping("/update")
     public FrontendResponseResult update(@RequestBody Brand brand) {
         // 调用方法
-        boolean flag = brandService.update(brand);
+        boolean flag = brandService.updateBrand(brand);
 
         // 封装成FrontendResponseResult返回数据
         return new FrontendResponseResult(flag ? BrandResponseCode.UPDATE_OK.getCode() : BrandResponseCode.UPDATE_ERROR.getCode());
@@ -49,7 +49,7 @@ public class BrandController {
     @PostMapping("/delete")
     public FrontendResponseResult delete(@RequestBody Brand brand) {
         // 调用方法
-        boolean flag = brandService.delete(brand);
+        boolean flag = brandService.deleteBrand(brand);
 
         //封装成FrontendResponseResult返回数据
         return new FrontendResponseResult(flag ? BrandResponseCode.DELETE_OK.getCode() : BrandResponseCode.DELETE_ERROR.getCode());
@@ -61,7 +61,7 @@ public class BrandController {
     @PostMapping("/deleteBatch")
     public FrontendResponseResult deleteBatch(@RequestBody Brand[] brands){
         // 调用方法
-        boolean flag = brandService.deleteBatch(brands);
+        boolean flag = brandService.deleteBatchBrands(brands);
 
         //封装成FrontendResponseResult返回数据
         return new FrontendResponseResult(flag ? BrandResponseCode.DELETE_OK.getCode() : BrandResponseCode.DELETE_ERROR.getCode());
@@ -74,7 +74,7 @@ public class BrandController {
     public FrontendResponseResult selectByPageAndCondition(@PathVariable Integer currentPage,
                                                            @PathVariable Integer pageSize, Brand brand) {
         // 调用方法
-        PageBean<Brand> pageBean = brandService.selectByPageAndCondition(currentPage, pageSize, brand);
+        PageBean<Brand> pageBean = brandService.selectBrandByPageAndCondition(currentPage, pageSize, brand);
 
         // 判断返回的数据是否为null
         boolean flag = pageBean != null;

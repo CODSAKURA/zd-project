@@ -18,10 +18,8 @@ public class BrandAspect {
     @PersistenceContext
     private EntityManager em;
 
-    // 切入点定义：捕获BrandService中的update和delete方法
-    @Pointcut("execution(* com.project.service.BrandService.update(..)) " +
-            "|| execution(* com.project.service.BrandService.delete(..))" +
-            "|| execution(* com.project.service.BrandService.add(..))")
+    // 切入点定义：捕获BrandService中的所有以Brand结尾的方法
+    @Pointcut("execution(* com.project.service.BrandService.*Brand(..))")
     private void jointForDeleteAndUpdate() {
     }
 
@@ -50,7 +48,7 @@ public class BrandAspect {
             }
 
             // add方法除外，需要执行以下的步骤
-            if(!"add".equals(joinPoint.getSignature().getName())) {
+            if(!"addBrand".equals(joinPoint.getSignature().getName())) {
                 // 判断id是否为null
                 if(brand.getId() == null){
                     throw new Exception("Brand object contains null properties");
@@ -65,7 +63,7 @@ public class BrandAspect {
                 }
 
                 // delete操作需判断要删除的和数据库里查到的值是否一致，如一直则需删除查到数据库里的数据
-                if("delete".equals(joinPoint.getSignature().getName())){
+                if("deleteBrand".equals(joinPoint.getSignature().getName())){
                     if (!result.getId().equals(brand.getId())
                             || !result.getBrandName().equals(brand.getBrandName())
                             || !result.getCompanyName().equals(brand.getCompanyName())

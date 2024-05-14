@@ -34,7 +34,7 @@ public class BrandServiceImpl implements BrandService {
      * - 如brand里面的任意属性为null，则抛出异常【除去属性id】
      */
     @Override
-    public boolean add(Brand brand) {
+    public boolean addBrand(Brand brand) {
         // 插入数据
         em.persist(brand);
 
@@ -51,7 +51,7 @@ public class BrandServiceImpl implements BrandService {
      * - 如brand里面的任意属性为null，则抛出异常
      */
     @Override
-    public boolean update(Brand brand) {
+    public boolean updateBrand(Brand brand) {
         // 更新数据
         em.merge(brand);
 
@@ -69,7 +69,7 @@ public class BrandServiceImpl implements BrandService {
      * - 如brand里面的任意属性为null，则抛出异常
      */
     @Override
-    public boolean delete(Brand brand){
+    public boolean deleteBrand(Brand brand){
 
         // 删除所找到的brand
         em.remove(brand);
@@ -87,7 +87,7 @@ public class BrandServiceImpl implements BrandService {
      * - 如传入的要删除的品牌长度为0，那么返回false
      */
     @Override
-    public boolean deleteBatch(Brand[] brands){
+    public boolean deleteBatchBrands(Brand[] brands){
         // 如没有需要删除的，则有问题，直接返回false
         if (brands.length == 0) {
             return false;
@@ -96,7 +96,7 @@ public class BrandServiceImpl implements BrandService {
         // 批量删除
         for (Brand brand : brands) {
             // 只要执行一个删除失败了就回退之前的所有步骤
-            boolean flag = delete(brand);
+            boolean flag = deleteBrand(brand);
             if (!flag) {
                 TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                 return false;
@@ -111,7 +111,7 @@ public class BrandServiceImpl implements BrandService {
      * - 如传入的brand里的所有属性都是null，则抛出异常。
      */
     @Override
-    public PageBean<Brand> selectByPageAndCondition(int currentPage, int pageSize, Brand brand) {
+    public PageBean<Brand> selectBrandByPageAndCondition(int currentPage, int pageSize, Brand brand) {
         PageBean<Brand> pageBean = new PageBean<>();
         try {
             // 判断传入的brand以及其内部参数是否为null
