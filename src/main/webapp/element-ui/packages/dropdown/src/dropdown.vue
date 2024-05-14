@@ -4,7 +4,7 @@
   import Migrating from 'element-ui/src/mixins/migrating';
   import ElButton from 'element-ui/packages/button';
   import ElButtonGroup from 'element-ui/packages/button-group';
-  import { generateId } from 'element-ui/src/utils/com.project.util';
+  import { generateId } from 'element-ui/src/utils/util';
 
   export default {
     name: 'ElDropdown',

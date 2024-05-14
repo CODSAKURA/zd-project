@@ -192,7 +192,7 @@ function normalizeComponent (
 /***/ 1:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/date-com.project.util");
+module.exports = require("element-ui/lib/utils/date-util");
 
 /***/ }),
 
@@ -368,7 +368,7 @@ var button_default = /*#__PURE__*/__webpack_require__.n(button_);
 var button_group_ = __webpack_require__(36);
 var button_group_default = /*#__PURE__*/__webpack_require__.n(button_group_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/calendar/src/date-table.vue?vue&type=script&lang=js&

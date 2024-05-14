@@ -190,7 +190,7 @@ function normalizeComponent (
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/date-com.project.util");
+module.exports = require("element-ui/lib/utils/date-util");
 
 /***/ }),
 /* 2 */
@@ -202,7 +202,7 @@ module.exports = require("element-ui/lib/utils/dom");
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/com.project.util");
+module.exports = require("element-ui/lib/utils/util");
 
 /***/ }),
 /* 4 */
@@ -368,7 +368,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/panel/time.vue?vue&type=template&id=3d939089&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/mixins/locale"
@@ -829,7 +829,7 @@ var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
 var clickoutside_ = __webpack_require__(12);
 var clickoutside_default = /*#__PURE__*/__webpack_require__.n(clickoutside_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/vue-popper"
@@ -2134,7 +2134,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/basic/time-spinner.vue?vue&type=template&id=1facadeb&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/scrollbar"
@@ -2872,7 +2872,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/panel/date.vue?vue&type=template&id=2440d4ea&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/clickoutside"
@@ -3041,7 +3041,7 @@ year_tablevue_type_template_id_c86ab5e0_render._withStripped = true
 // EXTERNAL MODULE: external "element-ui/lib/utils/dom"
 var dom_ = __webpack_require__(2);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/date-picker/src/basic/year-table.vue?vue&type=script&lang=js&

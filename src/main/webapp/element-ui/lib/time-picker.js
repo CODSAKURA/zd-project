@@ -192,7 +192,7 @@ function normalizeComponent (
 /***/ 1:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/date-com.project.util");
+module.exports = require("element-ui/lib/utils/date-util");
 
 /***/ }),
 
@@ -319,7 +319,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/panel/time.vue?vue&type=template&id=3d939089&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/mixins/locale"
@@ -778,7 +778,7 @@ var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
 var clickoutside_ = __webpack_require__(12);
 var clickoutside_default = /*#__PURE__*/__webpack_require__.n(clickoutside_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/utils/vue-popper"
@@ -2083,7 +2083,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/basic/time-spinner.vue?vue&type=template&id=1facadeb&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/scrollbar"
@@ -2598,7 +2598,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/date-picker/src/panel/time-range.vue?vue&type=template&id=fb28660e&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/date-com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/date-util"
 var date_util_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "element-ui/lib/mixins/locale"

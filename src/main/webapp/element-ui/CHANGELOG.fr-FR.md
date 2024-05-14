@@ -633,7 +633,7 @@ Docs
 #### Optimisation
 
 - Chore
-  - Ajouter la description de la page com.project.web (#14802 par @iamkun)
+  - Ajouter la description de la page web (#14802 par @iamkun)
 
 ### 2.6.3
 

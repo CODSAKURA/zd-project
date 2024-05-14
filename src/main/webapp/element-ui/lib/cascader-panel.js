@@ -220,7 +220,7 @@ module.exports = require("babel-helper-vue-jsx-merge-props");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/com.project.util");
+module.exports = require("element-ui/lib/utils/util");
 
 /***/ }),
 
@@ -295,7 +295,7 @@ var checkbox_default = /*#__PURE__*/__webpack_require__.n(checkbox_);
 var radio_ = __webpack_require__(51);
 var radio_default = /*#__PURE__*/__webpack_require__.n(radio_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/cascader-panel/src/cascader-node.vue?vue&type=script&lang=js&

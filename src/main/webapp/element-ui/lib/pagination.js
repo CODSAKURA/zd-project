@@ -199,7 +199,7 @@ module.exports = require("element-ui/lib/input");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/com.project.util");
+module.exports = require("element-ui/lib/utils/util");
 
 /***/ }),
 
@@ -516,7 +516,7 @@ var input_default = /*#__PURE__*/__webpack_require__.n(input_);
 var locale_ = __webpack_require__(6);
 var locale_default = /*#__PURE__*/__webpack_require__.n(locale_);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./packages/pagination/src/pagination.js

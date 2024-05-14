@@ -247,7 +247,7 @@ render._withStripped = true
 
 // CONCATENATED MODULE: ./packages/carousel/src/item.vue?vue&type=template&id=1801ae19&
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/util"
 var util_ = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./packages/carousel/src/item.vue?vue&type=script&lang=js&
@@ -425,7 +425,7 @@ item.install = function (Vue) {
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/com.project.util");
+module.exports = require("element-ui/lib/utils/util");
 
 /***/ })
 

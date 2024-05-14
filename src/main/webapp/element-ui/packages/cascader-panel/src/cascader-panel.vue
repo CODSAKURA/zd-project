@@ -26,7 +26,7 @@ import {
   isEqual,
   isEmpty,
   valueEquals
-} from 'element-ui/src/utils/com.project.util';
+} from 'element-ui/src/utils/util';
 
 const { keys: KeyCode } = AriaUtils;
 const DefaultProps = {

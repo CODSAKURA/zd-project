@@ -104,7 +104,7 @@ var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce_);
 // EXTERNAL MODULE: external "element-ui/lib/utils/dom"
 var dom_ = __webpack_require__(2);
 
-// EXTERNAL MODULE: external "element-ui/lib/utils/com.project.util"
+// EXTERNAL MODULE: external "element-ui/lib/utils/util"
 var util_ = __webpack_require__(3);
 
 // EXTERNAL MODULE: external "vue"
@@ -402,7 +402,7 @@ module.exports = require("element-ui/lib/utils/dom");
 /***/ 3:
 /***/ (function(module, exports) {
 
-module.exports = require("element-ui/lib/utils/com.project.util");
+module.exports = require("element-ui/lib/utils/util");
 
 /***/ }),
 
