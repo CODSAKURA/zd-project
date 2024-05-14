@@ -1,6 +1,6 @@
 package com.project.service.impl;
 
-import com.project.util.codeGenerateUtils;
+import com.project.util.CodeGenerateUtils;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.project.pojo.QUser;
@@ -22,7 +22,7 @@ import java.util.Map;
  *
  * @author : 周迪
  * @date : 2024/04/30
- * TODO 整理成AOP
+ * TODO 检查是否能跟Brand的AOP整合在一起
  */
 @Repository
 @Scope("prototype")
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         try {
             // 生成验证码
             ServletOutputStream os = response.getOutputStream();
-            String codeGenerate = codeGenerateUtils.outputVerifyImage(100, 50, os, 4);
+            String codeGenerate = CodeGenerateUtils.outputVerifyImage(100, 50, os, 4);
 
             // 将验证码存在Session中
             session.setAttribute("codeGenerateGen", codeGenerate);

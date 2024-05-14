@@ -3,7 +3,6 @@ package com.project.controller;
 import com.project.enums.UserResponseCode;
 import com.project.frontend.FrontendResponseResult;
 import com.project.service.UserService;
-import com.project.util.codeGenerateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

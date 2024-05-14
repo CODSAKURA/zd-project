@@ -21,6 +21,7 @@ import java.util.List;
  *
  * @author : 周迪
  * @date : 2024/04/30
+ * TODO 学习tplhk-letter包的命名方式，更改本项目的包路径名
  */
 @Repository
 @Scope("prototype")
@@ -85,6 +86,7 @@ public class BrandServiceImpl implements BrandService {
     /**
      * 批量删除品牌
      * - 如传入的要删除的品牌长度为0，那么返回false
+     * TODO 调用delete方法时，并未调用delete的AOP功能
      */
     @Override
     public boolean deleteBatchBrands(Brand[] brands){

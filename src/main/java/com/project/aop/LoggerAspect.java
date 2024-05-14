@@ -12,7 +12,7 @@
 //
 //@Component
 //@Aspect
-//// TODO 先注释此功能，因影响现阶段开发
+//// TODO 检查此类，判断能否与BrandAspect合并
 //public class LoggerAspect {
 //
 //    @Autowired
