@@ -12,7 +12,7 @@ import pers.brand.domain.service.LogDomainService;
 
 @Component
 @Aspect
-// TODO 1. 检查此类，判断能否与BrandAspect合并；2. 有bug报错被BrandAspect获取并没有添加到表格中（1）
+// TODO bug,当执行业务代码报错时错误不会被LoggerAspect获取，反倒会被BrandAspect获取，从而导致入参和方法名没有添加到表格中，解决办法：与BrandAspect合并（2）
 public class LoggerAspect {
 
     @Autowired

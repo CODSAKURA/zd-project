@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author : 周迪
  * @date : 2024/04/30
- * TODO 项目层级差一层（4）
+ * TODO 项目层级差一层，既pers.brand -> pers.zhoudi.brand，但是如修改后会出现URL无法访问项目的问题（4）
  */
 @Service
 @Scope("prototype")

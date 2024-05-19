@@ -22,7 +22,7 @@ import java.util.Map;
  *
  * @author : 周迪
  * @date : 2024/04/30
- * TODO 检查是否能跟Brand的AOP整合在一起（2）
+ * TODO 分析User的业务代码是否有相同的部分能跟Brand的AOP整合在一起（1）
  */
 @Repository
 @Scope("prototype")
