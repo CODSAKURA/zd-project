@@ -10,9 +10,14 @@ import org.springframework.stereotype.Component;
 import pers.brand.domain.entity.Log;
 import pers.brand.domain.service.LogDomainService;
 
+/**
+ * 此类为AOP类，提供额外的记录日志功能给Domain层的所有方法。
+ * TODO bug,当执行业务代码报错时错误不会被LoggerAspect获取，反倒会被BrandAspect获取，从而导致入参和方法名没有添加到表格中，解决办法：与BrandAspect合并（2）
+ * @author : 周迪
+ * @date : 2024/05/19
+ */
 @Component
 @Aspect
-// TODO bug,当执行业务代码报错时错误不会被LoggerAspect获取，反倒会被BrandAspect获取，从而导致入参和方法名没有添加到表格中，解决办法：与BrandAspect合并（2）
 public class LoggerAspect {
 
     @Autowired
@@ -36,7 +41,10 @@ public class LoggerAspect {
         return result;
     }
 
-    //封装成Log对象
+    /**
+     * 封装成Log对象，并存储在数据库的Log表中
+     * @param pjp
+     */
     private void logInsert(ProceedingJoinPoint pjp) {
         // 获取方法名
         Signature signature = pjp.getSignature();

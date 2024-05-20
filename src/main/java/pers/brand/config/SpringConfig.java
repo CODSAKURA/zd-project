@@ -13,7 +13,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 /**
- * 此类不归Spring别的bean管理，但管理其所对应的bean
+ * Spring配置类（此类不归Spring别的bean管理，但管理其所对应的bean）
+ * @author : 周迪
+ * @date : 2024/04/15
  */
 // 扫描项目中的所有bean（排除SpringMVC管理的bean）
 @ComponentScan(value="pers.brand",

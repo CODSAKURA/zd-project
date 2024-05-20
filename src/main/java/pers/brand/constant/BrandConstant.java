@@ -1,7 +1,7 @@
 package pers.brand.constant;
 
 /**
- * 响应给前端的状态码枚举类-品牌
+ * 响应给前端的状态码枚举类（Brand类所用）
  * @author : 周迪
  * @date : 2024/05/10
  */

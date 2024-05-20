@@ -21,6 +21,8 @@ public class BrandController {
 
     /**
      * 添加品牌
+     * @param brand
+     * @return
      */
     @PostMapping
     public Result add(@RequestBody Brand brand) {
@@ -33,6 +35,8 @@ public class BrandController {
 
     /**
      * 更新品牌
+     * @param brand
+     * @return
      */
     @PostMapping("/update")
     public Result update(@RequestBody Brand brand) {
@@ -45,6 +49,8 @@ public class BrandController {
 
     /**
      * 删除特定品牌
+     * @param brand
+     * @return
      */
     @PostMapping("/delete")
     public Result delete(@RequestBody Brand brand) {
@@ -57,6 +63,8 @@ public class BrandController {
 
     /**
      * 批量删除品牌
+     * @param brands
+     * @return
      */
     @PostMapping("/deleteBatch")
     public Result deleteBatch(@RequestBody Brand[] brands){
@@ -69,6 +77,10 @@ public class BrandController {
 
     /**
      * 分页查询品牌
+     * @param currentPage
+     * @param pageSize
+     * @param brand
+     * @return
      */
     @GetMapping("/pages/{currentPage}/pageSize/{pageSize}/brand")
     public Result selectByPageAndCondition(@PathVariable Integer currentPage,

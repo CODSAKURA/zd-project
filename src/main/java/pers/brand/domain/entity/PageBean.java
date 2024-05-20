@@ -3,7 +3,9 @@ package pers.brand.domain.entity;
 import java.util.List;
 
 /**
- * 分页查询的JavaBean
+ * PageBean实体类（目的：分页查询使用）
+ * @author : 周迪
+ * @date : 2024/03/30
  */
 public class PageBean<T> {
 

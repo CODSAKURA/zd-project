@@ -6,6 +6,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 /**
  * 当访问静态资源时，不要被SpringMVC拦截，直接让Tomcat去读取对应路径下的静态资源
+ * @author : 周迪
+ * @date : 2024/04/27
  */
 @Configuration //程序启动时让SpringMVC加载该类
 public class WebConfig extends WebMvcConfigurationSupport {

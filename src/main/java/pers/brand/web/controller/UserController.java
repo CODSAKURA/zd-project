@@ -25,9 +25,13 @@ public class UserController {
 
     /**
      * 生成验证码
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
      */
     @GetMapping("/codeGenerate")
-    public Result codeGenerate(HttpServletRequest request, HttpServletResponse response){
+    public Result codeGenerate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean flag = userDomainService.codeGenerate(request, response);
 
         // 封装成FrontendResponseResult传给前端
@@ -36,9 +40,13 @@ public class UserController {
 
     /**
      * 用户登录
+     * @param username
+     * @param password
+     * @param request
+     * @return
      */
     @GetMapping("/username/{username}/password/{password}")
-    public Result login(@PathVariable String username, @PathVariable String password, HttpServletRequest request) {
+    public Result login(@PathVariable String username, @PathVariable String password, HttpServletRequest request){
         // 判断用户是否存在
         boolean flag = userDomainService.login(username, password, request);
 
@@ -49,9 +57,12 @@ public class UserController {
     /**
      * 用户注册
      * - 如验证码输入错误等，统一为注册失败
+     * @param parameters
+     * @param request
+     * @return
      */
     @PostMapping
-    public Result register(@RequestBody Map<String, Object> parameters, HttpServletRequest request) throws IOException {
+    public Result register(@RequestBody Map<String, Object> parameters, HttpServletRequest request){
         // 注册用户
         boolean registerStatus = userDomainService.register(parameters, request);
 
@@ -60,7 +71,9 @@ public class UserController {
     }
 
     /**
-     * 检查用户名是否存在
+     * 检查用户名是否已经存在
+     * @param username
+     * @return
      */
     @GetMapping("/{username}")
     public Result selectUser(@PathVariable String username) {

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -22,7 +23,6 @@ import java.util.Map;
  *
  * @author : 周迪
  * @date : 2024/04/30
- * TODO 分析User的业务代码是否有相同的部分能跟Brand的AOP整合在一起（1）
  */
 @Repository
 @Scope("prototype")
@@ -31,166 +31,114 @@ public class UserDomainService {
     @PersistenceContext
     private EntityManager em;
 
-    public boolean codeGenerate(HttpServletRequest request, HttpServletResponse response) {
+    /**
+     * 生成验证码
+     * TODO 虽然说报错会被AOP给获取，但是不知道报错后图也被前端获取了（需分析）
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    public boolean codeGenerate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 创建Session
         HttpSession session = request.getSession();
 
-        try {
-            // 生成验证码
-            ServletOutputStream os = response.getOutputStream();
-            String codeGenerate = CodeGenerateUtils.outputVerifyImage(100, 50, os, 4);
+        // 生成验证码
+        ServletOutputStream os = response.getOutputStream();
+        String codeGenerate = CodeGenerateUtils.outputVerifyImage(100, 50, os, 4);
 
-            // 将验证码存在Session中
-            session.setAttribute("codeGenerateGen", codeGenerate);
+        // 将验证码存在Session中
+        session.setAttribute("codeGenerateGen", codeGenerate);
 
-            // 模拟出错
-            // int i = 1/0;
+        // 模拟出错
+        // int i = 1/0;
 
-            // 返回结果
-            return true;
-        } catch (Exception e) {
-            // 如验证码已存在Session中，则从Session中删除验证码
-            if (session.getAttribute("codeGenerateGen") == null) {
-                session.removeAttribute("codeGenerateGen");
-            }
-
-            // 返回结果
-            return false;
-        }
+        // 返回结果
+        return true;
     }
 
     /**
      * 登录方法（检测用户是否存在）
+     * @param username
+     * @param password
+     * @param request
+     * @return
      */
-    public boolean login(String username, String password, HttpServletRequest request) {
+    public boolean login(String username, String password, HttpServletRequest request){
         // 创建Session
         HttpSession session = request.getSession();
 
-        try {
-            // 如传入的任意一个的值为null，则报错
-            if (username == null || password == null) {
-                throw new NullPointerException();
-            }
+        // 查询用户
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        QUser qUser = QUser.user;
+        BooleanExpression condition = qUser.username.eq(username).and(qUser.password.eq(password));
 
-            // 查询用户
-            JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-            QUser qUser = QUser.user;
-            BooleanExpression condition = qUser.username.eq(username).and(qUser.password.eq(password));
+        // 判断用户是否存在
+        User user = queryFactory.selectFrom(qUser).where(condition).fetchOne();
 
-            // 判断用户是否存在
-            User user = queryFactory.selectFrom(qUser).where(condition).fetchOne();
-
-            // 如用户不存在，则报错
-            if (user == null) {
-                throw new Exception("User does not exist");
-            }
-
-            // 模拟出错
-            // int i = 1/0;
-
-            // 如用户存在，将存储记录存到Session中
-            session.setAttribute("user", user);
-
-            // 返回结果
-            return true;
-        } catch (Exception e) {
-            // 如查询失败，则执行以下步骤
-            // 打印错误信息
-            e.printStackTrace();
-
-            // 如用户已存在Session中，则从Session中删除用户
-            if(session.getAttribute("user") != null){
-                session.removeAttribute("user");
-            }
-
-            // 返回结果
+        // 如用户不存在，则返回登陆失败
+        if (user == null) {
             return false;
         }
+
+        // 模拟出错
+        // int i = 1/0;
+
+        // 如用户存在，将存储记录存到Session中
+        session.setAttribute("user", user);
+
+        // 返回结果
+        return true;
     }
 
     /**
      * 注册方法（保存用户信息）
+     * @param parameters
+     * @param request
+     * @return
      */
     public boolean register(Map<String, Object> parameters, HttpServletRequest request) {
-        // 插入行为未执行
-        boolean action = false;
-        try {
-            // 获取输入的验证码
-            String code = (String) parameters.get("code");
+        // 获取输入的验证码,用户名和密码
+        String code = (String) parameters.get("code");
+        String username = (String) parameters.get("username");
+        String password = (String) parameters.get("password");
 
-            // 从Session中获取程序生成的验证码
-            HttpSession session = request.getSession();
-            String codeGenerateGen = (String) session.getAttribute("codeGenerateGen");
+        // 从Session中获取程序生成的验证码
+        HttpSession session = request.getSession();
+        String codeGenerateGen = (String) session.getAttribute("codeGenerateGen");
 
-            // 如验证码不正确，则注册失败
-            if (!codeGenerateGen.equalsIgnoreCase(code)) {
-                return false;
-            }
-
-            // 验证码正确，开始注册
-            // 判断传入的username以及password是否为null
-            String username = (String) parameters.get("username");
-            String password = (String) parameters.get("password");
-
-            // 判断入参是否为空
-            if (username == null || password == null) {
-                throw new NullPointerException();
-            }
-
-            // 插入行为开始执行
-            action = true;
-
-            // 插入数据
-            em.persist(new User(username, password));
-
-            // 模拟出错
-            // int i = 1/0;
-
-            // 返回结果
-            return true;
-        } catch (Exception e) {
-            // 如插入失败，则执行以下步骤
-            // 打印错误信息
-            e.printStackTrace();
-
-            // 删除原本插入的数据
-            if (action) {
-                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            }
-
-            // 返回结果
+        // 如验证码不正确，则注册失败
+        if (!codeGenerateGen.equalsIgnoreCase(code)) {
             return false;
         }
+
+        // 验证码正确，开始注册
+        // 插入数据
+        em.persist(new User(username, password));
+
+        // 模拟出错
+        // int i = 1/0;
+
+        // 返回结果
+        return true;
     }
 
 
     /**
      * 检查用户名是否存在
+     * @param username
+     * @return
      */
     public boolean checkUserExist(String username) {
-        try {
-            // 如传入的值为null，则报错
-            if (username == null) {
-                throw new NullPointerException();
-            }
+        // 从数据库中获取username所对应的的用户
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        QUser qUser = QUser.user;
+        BooleanExpression condition = qUser.username.eq(username);
 
-            // 从数据库中获取username所对应的的用户
-            JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-            QUser qUser = QUser.user;
-            BooleanExpression condition = qUser.username.eq(username);
+        // 模拟出错
+        // int i = 1/0;
 
-            // 模拟出错
-            // int i = 1/0;
-
-            // 判断获取结果，并返回
-            return queryFactory.selectFrom(qUser).where(condition).fetchCount() > 0;
-        } catch (Exception e) {
-            // 如查询中途出现Exception，则执行以下步骤
-            // 打印异常
-            e.printStackTrace();
-
-            // 返回结果
-            return false;
-        }
+        // 判断获取结果，并返回
+        return queryFactory.selectFrom(qUser).where(condition).fetchCount() > 0;
     }
 }

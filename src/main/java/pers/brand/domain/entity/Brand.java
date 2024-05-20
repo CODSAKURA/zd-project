@@ -2,6 +2,11 @@ package pers.brand.domain.entity;
 
 import javax.persistence.*;
 
+/**
+ * Brand实体类
+ * @author : 周迪
+ * @date : 2024/04/09
+ */
 @Entity//hibernate的实体类
 @Table(name = "tb_brand")//映射的表名
 public class Brand {

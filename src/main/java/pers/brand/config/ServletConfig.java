@@ -3,8 +3,9 @@ package pers.brand.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
- * 使用SpringMVC的DispatcherServlet来处理请求
- * - 此类不归Spring管理，也不管理Spring的bean
+ * 使用SpringMVC的DispatcherServlet来处理请求（此类不归Spring管理，也不管理Spring的bean）
+ * @author : 周迪
+ * @date : 2024/04/27
  */
 public class ServletConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 

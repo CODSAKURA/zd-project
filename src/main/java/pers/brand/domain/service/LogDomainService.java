@@ -22,6 +22,10 @@ public class LogDomainService {
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * 将记录保存至Log数据库
+     * @param log
+     */
     public void saveLog(Log log) {
         // 设置日志时间
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

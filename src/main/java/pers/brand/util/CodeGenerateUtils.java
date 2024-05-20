@@ -15,6 +15,8 @@ import java.util.Random;
 
 /**
  * 生成验证码工具类
+ * @author : 周迪
+ * @date : 2024/03/30
  */
 @Component
 public class CodeGenerateUtils {
