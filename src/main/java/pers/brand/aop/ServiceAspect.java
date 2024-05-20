@@ -10,12 +10,10 @@ import pers.brand.domain.entity.Brand;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
- * 此类为AOP类，用于将Domain层方法相同的部分进行整合，目前主要是用于对入参进行过滤。
+ * 此类为AOP类，提供入参进行过滤给Domain层的所有方法。
  * @author : 周迪
  * @date : 2024/05/20
  */
