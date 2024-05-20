@@ -27,7 +27,7 @@ public class ServiceAspect {
     private EntityManager em;
 
     @Pointcut("execution(* pers.brand.domain.service.BrandDomainService.*Brand(..)) || " +
-            "execution(* pers.brand.domain.service.UserDomainService.*(..))")
+            "execution(* pers.brand.domain.service.UserDomainService.*User(..))")
     private void commonForServiceMethod() {
     }
 
@@ -72,33 +72,10 @@ public class ServiceAspect {
             // 1. 打印问题
             e.printStackTrace();
 
-            // 2. 删除存储在Session中的值
-            // 动态地获取哪个参数是HttpServletRequest类型
-            for (Object arg : joinPoint.getArgs()) {
-                if (arg instanceof HttpServletRequest) {
-                    // 通过request获取Session
-                    HttpServletRequest request = (HttpServletRequest) arg;
-                    HttpSession session = request.getSession();
-
-                    // 如验证码已存在Session中，则从Session中删除验证码
-                    if (session.getAttribute("codeGenerateGen") == null) {
-                        session.removeAttribute("codeGenerateGen");
-                    }
-
-                    // 如有用户记录存入到Session中，则删除存储在Session中的用户
-                    if (session.getAttribute("user") != null) {
-                        session.removeAttribute("user");
-                    }
-
-                    // 跳出循环
-                    break;
-                }
-            }
-
-            // 3. 回滚事务
+            // 2. 回滚事务
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 
-            // 4. 返回错误
+            // 3. 返回错误
             return false;
         }
     }

@@ -27,15 +27,11 @@ public class UserController {
      * 生成验证码
      * @param request
      * @param response
-     * @return
      * @throws IOException
      */
     @GetMapping("/codeGenerate")
-    public Result codeGenerate(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        boolean flag = userDomainService.codeGenerate(request, response);
-
-        // 封装成FrontendResponseResult传给前端
-        return new Result(flag ? UserConstant.CODE_GENERATE_OK.getCode() : UserConstant.CODE_GENERATE_ERROR.getCode());
+    public void codeGenerate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        userDomainService.codeGenerate(request, response);
     }
 
     /**
@@ -48,7 +44,7 @@ public class UserController {
     @GetMapping("/username/{username}/password/{password}")
     public Result login(@PathVariable String username, @PathVariable String password, HttpServletRequest request){
         // 判断用户是否存在
-        boolean flag = userDomainService.login(username, password, request);
+        boolean flag = userDomainService.loginUser(username, password, request);
 
         // 封装成FrontendResponseResult传给前端
         return new Result(flag ? UserConstant.LOGIN_OK.getCode() : UserConstant.LOGIN_ERROR.getCode());
@@ -64,7 +60,7 @@ public class UserController {
     @PostMapping
     public Result register(@RequestBody Map<String, Object> parameters, HttpServletRequest request){
         // 注册用户
-        boolean registerStatus = userDomainService.register(parameters, request);
+        boolean registerStatus = userDomainService.registerUser(parameters, request);
 
         // 判断注册的结果，封装成FrontendResponseResult传给前端
         return new Result(registerStatus ? UserConstant.REGISTER_OK.getCode() : UserConstant.REGISTER_ERROR.getCode());
@@ -78,7 +74,7 @@ public class UserController {
     @GetMapping("/{username}")
     public Result selectUser(@PathVariable String username) {
         // 对用户名是否存在进行判断
-        boolean flag = userDomainService.checkUserExist(username);
+        boolean flag = userDomainService.checkUser(username);
 
         // 判断用户名是否存在的结果，封装成FrontendResponseResult传给前端
         return new Result(flag ? UserConstant.USERNAME_EXIST_OK.getCode() : UserConstant.USERNAME_EXIST_ERROR.getCode());

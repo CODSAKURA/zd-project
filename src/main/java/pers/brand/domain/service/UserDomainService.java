@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.persistence.*;
 import javax.servlet.ServletOutputStream;
@@ -33,13 +32,12 @@ public class UserDomainService {
 
     /**
      * 生成验证码
-     * TODO 虽然说报错会被AOP给获取，但是不知道报错后图也被前端获取了（需分析）
      * @param request
      * @param response
      * @return
      * @throws IOException
      */
-    public boolean codeGenerate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void codeGenerate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 创建Session
         HttpSession session = request.getSession();
 
@@ -49,12 +47,6 @@ public class UserDomainService {
 
         // 将验证码存在Session中
         session.setAttribute("codeGenerateGen", codeGenerate);
-
-        // 模拟出错
-        // int i = 1/0;
-
-        // 返回结果
-        return true;
     }
 
     /**
@@ -64,7 +56,7 @@ public class UserDomainService {
      * @param request
      * @return
      */
-    public boolean login(String username, String password, HttpServletRequest request){
+    public boolean loginUser(String username, String password, HttpServletRequest request){
         // 创建Session
         HttpSession session = request.getSession();
 
@@ -97,7 +89,7 @@ public class UserDomainService {
      * @param request
      * @return
      */
-    public boolean register(Map<String, Object> parameters, HttpServletRequest request) {
+    public boolean registerUser(Map<String, Object> parameters, HttpServletRequest request) {
         // 获取输入的验证码,用户名和密码
         String code = (String) parameters.get("code");
         String username = (String) parameters.get("username");
@@ -129,7 +121,7 @@ public class UserDomainService {
      * @param username
      * @return
      */
-    public boolean checkUserExist(String username) {
+    public boolean checkUser(String username) {
         // 从数据库中获取username所对应的的用户
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         QUser qUser = QUser.user;
