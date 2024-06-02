@@ -1,4 +1,4 @@
-package pers.brand.aop;
+package pers.zhoudi.brand.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -7,8 +7,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pers.brand.domain.entity.Log;
-import pers.brand.domain.service.LogDomainService;
+import pers.zhoudi.brand.domain.entity.Log;
+import pers.zhoudi.brand.domain.service.LogDomainService;
 
 /**
  * 此类为AOP类，提供额外的记录日志功能给Domain层的所有方法。
@@ -23,7 +23,7 @@ public class LoggerAspect {
     private LogDomainService logDomainService;
 
     // 对于 com.project.service 包下面的所有类的所有方法进行切面【除去LogService】
-    @Pointcut("execution(* pers.brand.domain.service.*.*(..)) && !execution(* pers.brand.domain.service.LogDomainService.*(..))")
+    @Pointcut("execution(* pers.brand.domain.service.*.*(..)) && !execution(* pers.zhoudi.brand.domain.service.LogDomainService.*(..))")
     private void methodPointcut() {}
 
     // 不管方法运行成功与否，都要把日志记录下来为了方便排查和查看

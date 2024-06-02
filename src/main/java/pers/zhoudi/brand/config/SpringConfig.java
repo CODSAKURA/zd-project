@@ -1,4 +1,4 @@
-package pers.brand.config;
+package pers.zhoudi.brand.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.context.annotation.*;
@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  * @date : 2024/04/15
  */
 // 扫描项目中的所有bean（排除SpringMVC管理的bean）
-@ComponentScan(value="pers.brand",
+@ComponentScan(value="pers.zhoudi.brand",
         excludeFilters = {
                 // 排除Controller的beans
                 @ComponentScan.Filter(
@@ -54,7 +54,7 @@ public class SpringConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("pers.brand.domain.entity");
+        factory.setPackagesToScan("pers.zhoudi.brand.domain.entity");
         factory.setDataSource(dataSource());
         return factory;
     }

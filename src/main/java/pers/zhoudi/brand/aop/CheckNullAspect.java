@@ -1,4 +1,4 @@
-package pers.brand.aop;
+package pers.zhoudi.brand.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -6,11 +6,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import pers.brand.domain.entity.Brand;
+import pers.zhoudi.brand.domain.entity.Brand;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -20,13 +19,13 @@ import java.util.*;
  */
 @Component
 @Aspect
-public class ServiceAspect {
+public class CheckNullAspect {
 
     @PersistenceContext
     private EntityManager em;
 
-    @Pointcut("execution(* pers.brand.domain.service.BrandDomainService.*Brand(..)) || " +
-            "execution(* pers.brand.domain.service.UserDomainService.*User(..))")
+    @Pointcut("execution(* pers.zhoudi.brand.domain.service.BrandDomainService.*Brand(..)) || " +
+            "execution(* pers.zhoudi.brand.domain.service.UserDomainService.*User(..))")
     private void commonForServiceMethod() {
     }
 
@@ -132,7 +131,7 @@ public class ServiceAspect {
         Object[] args = joinPoint.getArgs();
 
         // 封装第一个参数成ArrayList
-        ArrayList<Brand> brands = null;
+        ArrayList<Brand> brands = new ArrayList<>();
         if(args[0] instanceof Brand[]) {
             // 判断要批量删除的数据是否存在（针对于批量删除）
             if(((Brand[]) args[0]).length == 0){

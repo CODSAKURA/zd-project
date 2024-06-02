@@ -1,4 +1,4 @@
-package pers.brand.config;
+package pers.zhoudi.brand.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author : 周迪
  * @date : 2024/04/27
  */
-@ComponentScan({"pers.brand.web.controller","pers.brand.config"})
+@ComponentScan({"pers.zhoudi.brand.web.controller","pers.zhoudi.brand.config"})
 @EnableWebMvc // 开启解析JSON格式
 public class SpringMvcConfig {
 }

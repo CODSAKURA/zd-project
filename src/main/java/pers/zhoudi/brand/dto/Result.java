@@ -1,4 +1,4 @@
-package pers.brand.dto;
+package pers.zhoudi.brand.dto;
 
 /**
  * 将数据进行特殊封装（目的：传递给前端）

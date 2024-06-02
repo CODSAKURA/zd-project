@@ -1,4 +1,4 @@
-package pers.brand.config;
+package pers.zhoudi.brand.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

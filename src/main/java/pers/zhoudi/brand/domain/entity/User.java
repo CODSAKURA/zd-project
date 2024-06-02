@@ -1,4 +1,4 @@
-package pers.brand.domain.entity;
+package pers.zhoudi.brand.domain.entity;
 
 import javax.persistence.*;
 

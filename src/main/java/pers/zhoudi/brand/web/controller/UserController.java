@@ -1,8 +1,8 @@
-package pers.brand.web.controller;
+package pers.zhoudi.brand.web.controller;
 
-import pers.brand.constant.UserConstant;
-import pers.brand.dto.Result;
-import pers.brand.domain.service.UserDomainService;
+import pers.zhoudi.brand.constant.UserConstant;
+import pers.zhoudi.brand.dto.Result;
+import pers.zhoudi.brand.domain.service.UserDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package pers.brand.domain.service;
+package pers.zhoudi.brand.domain.service;
 
-import pers.brand.domain.entity.Log;
+import pers.zhoudi.brand.domain.entity.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,13 +1,13 @@
 package pers.brand.domain.service;
 
-import pers.brand.config.SpringConfig;
-import pers.brand.domain.entity.Log;
+import pers.zhoudi.brand.config.SpringConfig;
+import pers.zhoudi.brand.domain.entity.Log;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pers.brand.domain.service.LogDomainService;
+import pers.zhoudi.brand.domain.service.LogDomainService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringConfig.class)

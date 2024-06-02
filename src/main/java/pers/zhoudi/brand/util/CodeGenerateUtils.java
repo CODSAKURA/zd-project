@@ -1,4 +1,4 @@
-package pers.brand.util;
+package pers.zhoudi.brand.util;
 
 import org.springframework.stereotype.Component;
 

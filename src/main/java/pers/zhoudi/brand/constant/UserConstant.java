@@ -1,4 +1,4 @@
-package pers.brand.constant;
+package pers.zhoudi.brand.constant;
 
 /**
  * 响应给前端的状态码枚举类（User类所用）

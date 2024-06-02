@@ -1,8 +1,8 @@
-package pers.brand.domain.service;
+package pers.zhoudi.brand.domain.service;
 
-import pers.brand.domain.entity.QUser;
-import pers.brand.domain.entity.User;
-import pers.brand.util.CodeGenerateUtils;
+import pers.zhoudi.brand.domain.entity.QUser;
+import pers.zhoudi.brand.domain.entity.User;
+import pers.zhoudi.brand.util.CodeGenerateUtils;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Scope;

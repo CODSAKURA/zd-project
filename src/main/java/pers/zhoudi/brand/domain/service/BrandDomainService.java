@@ -1,14 +1,13 @@
-package pers.brand.domain.service;
+package pers.zhoudi.brand.domain.service;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import pers.brand.domain.entity.Brand;
-import pers.brand.domain.entity.PageBean;
+import pers.zhoudi.brand.domain.entity.Brand;
+import pers.zhoudi.brand.domain.entity.PageBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import pers.brand.domain.entity.QBrand;
+import pers.zhoudi.brand.domain.entity.QBrand;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,7 +19,6 @@ import java.util.List;
  *
  * @author : 周迪
  * @date : 2024/04/30
- * TODO 项目层级差一层，既pers.brand -> pers.zhoudi.brand，但是如修改后会出现URL无法访问项目的问题（2）
  */
 @Service
 @Scope("prototype")
