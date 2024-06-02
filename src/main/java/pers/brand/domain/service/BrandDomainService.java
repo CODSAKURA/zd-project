@@ -12,6 +12,7 @@ import pers.brand.domain.entity.QBrand;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ import java.util.List;
  *
  * @author : 周迪
  * @date : 2024/04/30
- * TODO 项目层级差一层，既pers.brand -> pers.zhoudi.brand，但是如修改后会出现URL无法访问项目的问题（4）
+ * TODO 项目层级差一层，既pers.brand -> pers.zhoudi.brand，但是如修改后会出现URL无法访问项目的问题（2）
  */
 @Service
 @Scope("prototype")
@@ -32,6 +33,7 @@ public class BrandDomainService {
      * 增加品牌
      * - 如brand为null
      * - 如brand里面的任意属性为null，则抛出异常【除去属性id】
+     *
      * @param brand
      * @return
      */
@@ -50,6 +52,7 @@ public class BrandDomainService {
      * 更新特定品牌
      * - 如brand为null
      * - 如brand里面的任意属性为null，则抛出异常
+     *
      * @param brand
      * @return
      */
@@ -69,10 +72,11 @@ public class BrandDomainService {
      * 删除特定品牌
      * - 如brand为null
      * - 如brand里面的任意属性为null，则抛出异常
+     *
      * @param brand
      * @return
      */
-    public boolean deleteBrand(Brand brand){
+    public boolean deleteBrand(Brand brand) {
 
         // 删除所找到的brand
         em.remove(brand);
@@ -88,25 +92,15 @@ public class BrandDomainService {
     /**
      * 批量删除品牌
      * - 如传入的要删除的品牌长度为0，那么返回false
-     * TODO 调用delete方法时，并未调用delete的AOP功能, 如删除未存在的数据会导致服务内部报错（3）
+     *
      * @param brands
      * @return
      */
-    public boolean deleteBatchBrands(Brand[] brands){
-        // 如没有需要删除的，则有问题，直接返回false
-        if (brands.length == 0) {
-            return false;
-        }
-
+    public boolean deleteBatchBrand(Brand[] brands) {
         // 批量删除
-        for (Brand brand : brands) {
-            // 只要执行一个删除失败了就回退之前的所有步骤
-            boolean flag = deleteBrand(brand);
-            if (!flag) {
-                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-                return false;
-            }
-        }
+        Arrays.asList(brands).forEach(x -> {
+            deleteBrand(x);
+        });
 
         // 返回结果
         return true;
@@ -116,6 +110,7 @@ public class BrandDomainService {
      * 分页条件查询品牌
      * - 如传入的currentPage，pageSize以及brand都不是合理的值，则抛出异常
      * - 如传入的brand里的所有属性都是null，则抛出异常。
+     *
      * @param currentPage
      * @param pageSize
      * @param brand
@@ -186,14 +181,14 @@ public class BrandDomainService {
             // 返回数据
             return pageBean;
         } catch (Exception e) {
-            // 如查询失败，则执行以下步骤
+            // 如查询失败，则执行以下步骤：
             // 1. 打印问题
             e.printStackTrace();
 
-            // 返回一个null的对象给Controller
+            // 2. 返回一个null的对象给Controller
             pageBean = null;
 
-            // 返回对象
+            // 3. 返回对象
             return pageBean;
         }
     }

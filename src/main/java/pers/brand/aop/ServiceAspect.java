@@ -10,7 +10,8 @@ import pers.brand.domain.entity.Brand;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * 此类为AOP类，提供入参进行过滤给Domain层的所有方法。
@@ -31,7 +32,7 @@ public class ServiceAspect {
 
     // 对传入到User以及Brand的Domain层方法里的入参进行统一过滤
     @Around("commonForServiceMethod()")
-    public Object parameterCheck(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object parameterCheckForNull(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             // 获取当前方法所在的完整的类名
             String classNameComplete = joinPoint.getTarget().getClass().getName();
@@ -44,12 +45,12 @@ public class ServiceAspect {
             // 判断类名是否为Brand开头
             Object[] args = null;
             if (className.startsWith("Brand")) {
-                args = brandParameterCheck(joinPoint);
+                args = brandParameterCheckForNull(joinPoint);
             }
 
             // 判断类名是否为User开头
             if (className.startsWith("User")) {
-                args = userParameterCheck(joinPoint);
+                args = userParameterCheckForNull(joinPoint);
             }
 
             // 判断后的参数还有没有漏过滤的
@@ -84,7 +85,7 @@ public class ServiceAspect {
      * @return
      * @throws Exception
      */
-    public Object[] userParameterCheck(ProceedingJoinPoint joinPoint) throws Exception {
+    public Object[] userParameterCheckForNull(ProceedingJoinPoint joinPoint) throws Exception {
         // 获取所有入参
         Object[] args = joinPoint.getArgs();
 
@@ -126,55 +127,63 @@ public class ServiceAspect {
      * @return
      * @throws Exception
      */
-    public Object[] brandParameterCheck(ProceedingJoinPoint joinPoint) throws Exception {
+    public Object[] brandParameterCheckForNull(ProceedingJoinPoint joinPoint) throws Exception {
         // 获取所有参数
         Object[] args = joinPoint.getArgs();
 
-        // 获取第一个参数
-        Brand brand = (Brand) args[0];
+        // 封装第一个参数成ArrayList
+        ArrayList<Brand> brands = null;
+        if(args[0] instanceof Brand[]) {
+            // 判断要批量删除的数据是否存在（针对于批量删除）
+            if(((Brand[]) args[0]).length == 0){
+                throw new Exception("Empty brand list");
+            }
 
-        // 如第一个入参为null，则报错
-        if (brand == null) {
-            throw new Exception("Brand object is null");
+            // 封装成ArrayList
+            brands = new ArrayList<>(Arrays.asList((Brand[]) args[0]));
+
+        }else {
+            Brand brand = (Brand) args[0];
+            brands.add(brand);
         }
 
-        // 如第一个参数的内部任意一个参数为null，则报错
-        if (brand.getBrandName() == null
-                || brand.getCompanyName() == null
-                || brand.getDescription() == null
-                || brand.getOrdered() == null
-                || brand.getStatus() == null) {
-            throw new Exception("Brand object contains null properties");
-        }
-
-        // delete和update方法需做以下额外的步骤
-        if (!"addBrand".equals(joinPoint.getSignature().getName())) {
-            // 判断内部参数id是否为null
-            if (brand.getId() == null) {
+        // 判断第一个参数里的每个元素是否为null
+        for (Brand brand : brands) {
+            // 判断元素里的（除了id外）每个属性是否为null（针对所有方法）
+            if (Objects.isNull(brand.getBrandName())
+                    || Objects.isNull(brand.getCompanyName())
+                    || Objects.isNull(brand.getDescription())
+                    || Objects.isNull(brand.getOrdered())
+                    || Objects.isNull(brand.getStatus())) {
                 throw new Exception("Brand object contains null properties");
             }
 
-            // 如不为null，则通过id查找数据库的真实brand
-            Brand result = em.find(Brand.class, brand.getId());
-
-            // 如查不到数据，则抛出异常
-            if (result == null) {
-                throw new Exception("Brand object not found");
-            }
-
-            // 如查到数据，delete还需对查到的数据和入参进行比对，判断是否为要删除的数据
-            if ("deleteBrand".equals(joinPoint.getSignature().getName())) {
-                if (!result.getId().equals(brand.getId())
-                        || !result.getBrandName().equals(brand.getBrandName())
-                        || !result.getCompanyName().equals(brand.getCompanyName())
-                        || !result.getDescription().equals(brand.getDescription())
-                        || result.getOrdered() != brand.getOrdered()
-                        || result.getStatus() != brand.getStatus()) {
-                    throw new Exception("Brand properties do not match");
+            // 除了add方法外，需做以下额外的判断
+            if (!"addBrand".equals(joinPoint.getSignature().getName())) {
+                // id属性是否为null
+                if (Objects.isNull(brand.getId())) {
+                    throw new Exception("Brand object contains null properties");
                 }
 
-                // 如没有任何问题，则将查询到的数据作为参数进行传递
-                args[0] = result;
+                // 如不为null，则通过id查找数据库的真实brand
+                Brand result = em.find(Brand.class, brand.getId());
+
+                // 如查不到数据，则抛出异常
+                if (Objects.isNull(result)) {
+                    throw new Exception("Brand object does not exist");
+                }
+
+                // 如查到数据，delete还需与查到的数据进行比对，判断是否为要删除的数据
+                if ("deleteBrand".equals(joinPoint.getSignature().getName())) {
+                    if (!result.getId().equals(brand.getId())
+                            || !result.getBrandName().equals(brand.getBrandName())
+                            || !result.getCompanyName().equals(brand.getCompanyName())
+                            || !result.getDescription().equals(brand.getDescription())
+                            || result.getOrdered() != brand.getOrdered()
+                            || result.getStatus() != brand.getStatus()) {
+                        throw new Exception("Brand properties do not match");
+                    }
+                }
             }
         }
 

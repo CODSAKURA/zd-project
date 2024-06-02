@@ -69,7 +69,7 @@ public class BrandController {
     @PostMapping("/deleteBatch")
     public Result deleteBatch(@RequestBody Brand[] brands){
         // 调用方法
-        boolean flag = brandDomainService.deleteBatchBrands(brands);
+        boolean flag = brandDomainService.deleteBatchBrand(brands);
 
         //封装成FrontendResponseResult返回数据
         return new Result(flag ? BrandConstant.DELETE_OK.getCode() : BrandConstant.DELETE_ERROR.getCode());
