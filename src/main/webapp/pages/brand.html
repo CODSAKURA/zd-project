@@ -49,16 +49,16 @@
             title="添加品牌"
             :visible.sync="dialogVisible"
             width="30%">
-        <el-form ref="form" :model="brand" label-width="80px">
-            <el-form-item label="品牌名称">
+        <el-form ref="AddBrandForm" :model="brand" :rules="rules" label-width="80px">
+            <el-form-item label="品牌名称" prop="brandName">
                 <el-input v-model="brand.brandName"></el-input>
             </el-form-item>
 
-            <el-form-item label="企业名称">
+            <el-form-item label="企业名称" prop="companyName">
                 <el-input v-model="brand.companyName"></el-input>
             </el-form-item>
 
-            <el-form-item label="排序">
+            <el-form-item label="排序" prop="ordered">
                 <el-input v-model="brand.ordered"></el-input>
             </el-form-item>
 
@@ -128,16 +128,16 @@
             title="编辑品牌"
             :visible.sync="editDialogVisible"
             width="30%">
-        <el-form ref="form" :model="modifyBrand" label-width="80px">
-            <el-form-item label="品牌名称">
+        <el-form ref="ModifyBrandForm" :model="modifyBrand" :rules="rules" label-width="80px">
+            <el-form-item label="品牌名称" prop="brandName">
                 <el-input v-model="modifyBrand.brandName"></el-input>
             </el-form-item>
 
-            <el-form-item label="企业名称">
+            <el-form-item label="企业名称" prop="companyName">
                 <el-input v-model="modifyBrand.companyName"></el-input>
             </el-form-item>
 
-            <el-form-item label="排序">
+            <el-form-item label="排序" prop="ordered">
                 <el-input v-model="modifyBrand.ordered"></el-input>
             </el-form-item>
 

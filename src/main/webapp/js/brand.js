@@ -39,7 +39,19 @@ new Vue({
         tableData: [],
         currentPage: 1,
         totalCount: 0,
-        pageSize: 10
+        pageSize: 10,
+        rules: {
+            brandName: [
+                { required: true, message: '请输入品牌名称', trigger: 'blur' }
+            ],
+            companyName: [
+                { required: true, message: '请输入企业名称', trigger: 'blur' }
+            ],
+            ordered: [
+                { required: true, message: '请输入排序', trigger: 'blur' },
+                { pattern: /^[0-9]*$/, message: '排序只能包含数字', trigger: 'blur' }
+            ]
+        }
     },
 
     methods: {
@@ -144,27 +156,32 @@ new Vue({
             };
         },
 
-        // TODO 需判断插入的ordered必须得是数字
         addBrand() {
             var _this = this;
-            axios({
-                method: "POST",
-                url: "http://localhost:8080/zd_project_war/brands",
-                data: _this.brand
-            }).then(function (resp) {
-                if (resp.data.code == 30041) {
-                    _this.dialogVisible = false;
-                    _this.selectByPageAndCondition();
-                    _this.$message({
-                        message: '恭喜你，添加成功',
-                        type: 'success'
-                    });
-                }
+            this.$refs['AddBrandForm'].validate((valid) => {
+                if (valid) {
+                    axios({
+                        method: "POST",
+                        url: "http://localhost:8080/zd_project_war/brands",
+                        data: _this.brand
+                    }).then(function (resp) {
+                        if (resp.data.code == 30041) {
+                            _this.dialogVisible = false;
+                            _this.selectByPageAndCondition();
+                            _this.$message({
+                                message: '恭喜你，添加成功',
+                                type: 'success'
+                            });
+                        }
 
-                if (resp.data.code == 30040) {
-                    _this.$message.error('发生错误，请重新提交');
+                        if (resp.data.code == 30040) {
+                            _this.$message.error('发生错误，请重新提交');
+                        }
+                    });
+                } else {
+                    _this.$message.error('表单验证失败，请检查输入内容');
                 }
-            })
+            });
         },
 
         handleSelectionChange(val) {
@@ -186,27 +203,33 @@ new Vue({
             this.editDialogVisible = true;
         },
 
-        // TODO 需判断插入的ordered必须得是数字
+        // TODO 有bug，点取消时需删除之前添加的
         handleUpdate() {
             var _this = this;
-            axios({
-                method: "POST",
-                url: "http://localhost:8080/zd_project_war/brands/update",
-                data: _this.modifyBrand
-            }).then(function (resp) {
-                if (resp.data.code == 30051) {
-                    _this.editDialogVisible = false;
-                    _this.selectByPageAndCondition();
-                    _this.$message({
-                        message: '恭喜你，修改成功',
-                        type: 'success'
-                    });
-                }
+            this.$refs['ModifyBrandForm'].validate((valid) => {
+                if (valid) {
+                    axios({
+                        method: "POST",
+                        url: "http://localhost:8080/zd_project_war/brands/update",
+                        data: _this.modifyBrand
+                    }).then(function (resp) {
+                        if (resp.data.code == 30051) {
+                            _this.editDialogVisible = false;
+                            _this.selectByPageAndCondition();
+                            _this.$message({
+                                message: '恭喜你，修改成功',
+                                type: 'success'
+                            });
+                        }
 
-                if (resp.data.code == 30050) {
-                    _this.$message.error('发生错误，请重新提交');
+                        if (resp.data.code == 30050) {
+                            _this.$message.error('发生错误，请重新提交');
+                        }
+                    });
+                } else {
+                    _this.$message.error('表单验证失败，请检查输入内容');
                 }
-            })
+            });
         }
     }
 })
