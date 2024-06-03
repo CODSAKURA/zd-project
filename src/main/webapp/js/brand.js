@@ -33,27 +33,25 @@ new Vue({
             description: ''
         },
 
-        editDialogVisible:false,
-        dialogVisible: false, // TODO 新增按钮之后数据还是之前填的数据，需要重新初始化
+        editDialogVisible: false,
+        dialogVisible: false,
         multipleSelection: [],
         tableData: [],
         currentPage: 1,
-        selectedIds:[],
-        totalCount:0,//总记录数
-        pageSize:10 //每页显示的条数
+        totalCount: 0,
+        pageSize: 10
     },
 
     methods: {
         handleMultiDelete() {
             var _this = this;
 
-            // 检查是否有选中的数据
             if (this.multipleSelection.length === 0) {
                 this.$message.warning('您未选择任何数据');
                 setTimeout(() => {
                     _this.$message.closeAll();
                 }, 2000);
-                return; // 不执行删除操作
+                return;
             }
 
             _this.$confirm('此操作将永久删除所选的所有记录, 是否继续?', {
@@ -61,30 +59,24 @@ new Vue({
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                // 用户点击确定后的操作【从multipleSelection中提取id，并存在selectedIds】
-                for (let i = 0; i < this.multipleSelection.length; i++) {
-                    let selectionElement = this.multipleSelection[i];
-                    this.selectedIds[i] = selectionElement.id;
-                }
-
-                // 通过ajax提交数据并执行方法
                 axios({
                     method: "POST",
-                    url: "http://localhost:8080/zd_project_war/brands/deleteByIds",
-                    data: _this.selectedIds
+                    url: "http://localhost:8080/zd_project_war/brands/deleteBatch",
+                    data: _this.multipleSelection
                 }).then(function (resp) {
-                    if (resp.data == "success") {
+                    if (resp.data.code == 30061) {
                         _this.selectByPageAndCondition();
                         _this.$message({
                             message: '恭喜你，删除成功',
                             type: 'success'
                         });
-                    } else {
+                    }
+
+                    if (resp.data.code == 30060) {
                         _this.$message.error('发生错误，请重新提交');
                     }
                 })
             }).catch(() => {
-                //用户点击取消后的操作
                 _this.$message({
                     message: '已取消删除',
                     type: 'info'
@@ -99,24 +91,24 @@ new Vue({
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                // 用户点击确定后的操作
                 axios({
                     method: "POST",
                     url: "http://localhost:8080/zd_project_war/brands/delete",
                     data: row
                 }).then(function (resp) {
-                    if (resp.data == "success") {
+                    if (resp.data.code == 30061) {
                         _this.selectByPageAndCondition();
                         _this.$message({
                             message: '恭喜你，删除成功',
                             type: 'success'
                         });
-                    } else {
+                    }
+
+                    if (resp.data.code == 30060) {
                         _this.$message.error('发生错误，请重新提交');
                     }
                 })
             }).catch(() => {
-                // 用户点击取消后的操作
                 _this.$message({
                     message: '已取消删除',
                     type: 'info'
@@ -132,8 +124,8 @@ new Vue({
                     + _this.pageSize + "/brand?brandName=" + _this.searchBrand.brandName
                     + "&companyName=" + _this.searchBrand.companyName + "&status=" + _this.searchBrand.status
             }).then(function (resp) {
-                _this.tableData = resp.data.row;
-                _this.totalCount = resp.data.totalCount;
+                _this.tableData = resp.data.data.row;
+                _this.totalCount = resp.data.data.totalCount;
             })
         },
 
@@ -141,6 +133,18 @@ new Vue({
             this.selectByPageAndCondition();
         },
 
+        resetBrand() {
+            this.brand = {
+                status: '',
+                brandName: '',
+                companyName: '',
+                id: '',
+                ordered: '',
+                description: ''
+            };
+        },
+
+        // TODO 需判断插入的ordered必须得是数字
         addBrand() {
             var _this = this;
             axios({
@@ -148,14 +152,16 @@ new Vue({
                 url: "http://localhost:8080/zd_project_war/brands",
                 data: _this.brand
             }).then(function (resp) {
-                if (resp.data == "success") {
+                if (resp.data.code == 30041) {
                     _this.dialogVisible = false;
                     _this.selectByPageAndCondition();
                     _this.$message({
                         message: '恭喜你，添加成功',
                         type: 'success'
                     });
-                } else {
+                }
+
+                if (resp.data.code == 30040) {
                     _this.$message.error('发生错误，请重新提交');
                 }
             })
@@ -175,26 +181,29 @@ new Vue({
             this.selectByPageAndCondition();
         },
 
-        handleEdit(row){
+        handleEdit(row) {
             this.modifyBrand = row;
             this.editDialogVisible = true;
         },
 
-        handleUpdate(){
+        // TODO 需判断插入的ordered必须得是数字
+        handleUpdate() {
             var _this = this;
             axios({
                 method: "POST",
                 url: "http://localhost:8080/zd_project_war/brands/update",
                 data: _this.modifyBrand
             }).then(function (resp) {
-                if (resp.data == "success") {
+                if (resp.data.code == 30051) {
                     _this.editDialogVisible = false;
                     _this.selectByPageAndCondition();
                     _this.$message({
                         message: '恭喜你，修改成功',
                         type: 'success'
                     });
-                } else {
+                }
+
+                if (resp.data.code == 30050) {
                     _this.$message.error('发生错误，请重新提交');
                 }
             })

@@ -76,8 +76,11 @@ public class BrandDomainService {
      */
     public boolean deleteBrand(Brand brand) {
 
+        // 如不为null，则通过id查找数据库的真实brand
+        Brand result = em.find(Brand.class, brand.getId());
+
         // 删除所找到的brand
-        em.remove(brand);
+        em.remove(result);
 
         // 模拟出错
         // int i = 1/0;

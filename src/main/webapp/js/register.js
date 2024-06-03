@@ -31,15 +31,13 @@ function checkUserValid() {
     //检查用户名是否已存在
     axios.get("http://localhost:8080/zd_project_war/users/" + username).then(function (resp) {
         //用户名不存在
-        // TODO 更改获取后端数据方式
-        if (resp.data == false) {
+        if (resp.data.code == 20041) {
             document.getElementById("username_err").style.display = 'none'; //不展示
             document.getElementById("username_exist").style.display = 'none'; //不展示
         }
 
         //用户名已存在
-        // TODO 更改获取后端数据方式
-        if (resp.data == true) {
+        if (resp.data.code == 20040) {
             document.getElementById("username_err").style.display = 'none'; //不展示
             document.getElementById("username_exist").style.display = ''; //展示
         }
@@ -103,8 +101,7 @@ function handleSubmit() {
             data: formData
         }).then(function (resp) {
             // 注册成功
-            // TODO 更改获取后端数据方式
-            if (resp.data == "register_success") {
+            if (resp.data.code == 20031) {
                 // 将数据存储到 sessionStorage 中
                 sessionStorage.setItem("register_success", "register_success");
 
@@ -113,8 +110,7 @@ function handleSubmit() {
             }
 
             // 注册失败
-            // TODO 更改获取后端数据方式
-            if (resp.data == "register_failed") {
+            if (resp.data == 20030) {
                 document.getElementById("registerFailedMsg").style.display = '';
             }
         })

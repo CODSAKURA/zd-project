@@ -40,8 +40,9 @@
     <!--批量删除和新增的按钮-->
     <el-row>
         <el-button type="danger" plain @click="handleMultiDelete()">批量删除</el-button>
-        <el-button type="primary" plain @click="dialogVisible = true">新增</el-button>
+        <el-button type="primary" plain @click="() => { resetBrand(); dialogVisible = true; }">新增</el-button>
     </el-row>
+
 
     <!--新增按钮：对话框表单-->
     <el-dialog

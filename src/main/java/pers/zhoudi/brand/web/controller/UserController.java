@@ -77,6 +77,6 @@ public class UserController {
         boolean flag = userDomainService.checkUser(username);
 
         // 判断用户名是否存在的结果，封装成FrontendResponseResult传给前端
-        return new Result(flag ? UserConstant.USERNAME_EXIST_OK.getCode() : UserConstant.USERNAME_EXIST_ERROR.getCode());
+        return new Result(flag ? UserConstant.USERNAME_EXIST.getCode() : UserConstant.USERNAME_NOT_EXIST.getCode());
     }
 }
