@@ -199,11 +199,12 @@ new Vue({
         },
 
         handleEdit(row) {
-            this.modifyBrand = row;
+            // 如不用_.cloneDeep便是浅拷贝，只拷贝值，如果其中一个对象改变了这个地址，就会影响到另一个对象。
+            // 引入_.cloneDeep为深拷贝，拷贝所有的属性，并拷贝属性指向的动态分配的内存，拷贝前后两个对象互不影响。
+            this.modifyBrand = _.cloneDeep(row);
             this.editDialogVisible = true;
         },
 
-        // TODO 有bug，点取消时需删除之前添加的
         handleUpdate() {
             var _this = this;
             this.$refs['ModifyBrandForm'].validate((valid) => {
