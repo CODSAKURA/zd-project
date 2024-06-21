@@ -23,7 +23,7 @@ public class LoggerAspect {
     private LogDomainService logDomainService;
 
     // 对于 com.project.service 包下面的所有类的所有方法进行切面【除去LogService】
-    @Pointcut("execution(* pers.brand.domain.service.*.*(..)) && !execution(* pers.zhoudi.brand.domain.service.LogDomainService.*(..))")
+    @Pointcut("execution(* pers.zhoudi.brand.domain.service.*.*(..)) && !execution(* pers.zhoudi.brand.domain.service.LogDomainService.*(..))")
     private void methodPointcut() {}
 
     // 不管方法运行成功与否，都要把日志记录下来为了方便排查和查看
