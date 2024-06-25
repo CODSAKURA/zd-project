@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import pers.zhoudi.brand.constant.ResultEnum;
+import pers.zhoudi.brand.constant.ExceptionEnum;
 import pers.zhoudi.brand.domain.entity.Brand;
 import pers.zhoudi.brand.exception.BusinessException;
 
@@ -92,7 +92,7 @@ public class CheckNullAspect {
 
         // 统一判断第一个参数是否为null
         if (args[0] == null) {
-            throw new BusinessException(ResultEnum.DATA_EMPTY);
+            throw new BusinessException(ExceptionEnum.DATA_EMPTY);
         }
 
         // register方法特殊的入参进行判断（第一个参数长度必须等于3，并且里面的每一项都不能是null）
@@ -102,19 +102,19 @@ public class CheckNullAspect {
 
             // 判断第一个参数内是否包含code，username以及password三个参数
             if (parameters.size() != 3) {
-                throw new BusinessException(ResultEnum.DATA_PROPERTIES_UNCOMPLETED);
+                throw new BusinessException(ExceptionEnum.DATA_PROPERTIES_UNCOMPLETED);
             }
 
             // 判断三个参数任意一项是否为空
             if (parameters.get(0) == null || parameters.get(1) == null || parameters.get(2) == null) {
-                throw new BusinessException(ResultEnum.DATA_EMPTY);
+                throw new BusinessException(ExceptionEnum.DATA_EMPTY);
             }
         }
 
         // login方法特殊的入参判断（由于有两个入参，需判断第二个入参是否为空）
         if ("login".equals(joinPoint.getSignature().getName())) {
             if (args[1] == null) {
-                throw new BusinessException(ResultEnum.DATA_EMPTY);
+                throw new BusinessException(ExceptionEnum.DATA_EMPTY);
             }
         }
 
@@ -137,7 +137,7 @@ public class CheckNullAspect {
         if(args[0] instanceof Brand[]) {
             // 判断要批量删除的数据是否存在（针对于批量删除）
             if(((Brand[]) args[0]).length == 0){
-                throw new BusinessException(ResultEnum.DATA_EMPTY);
+                throw new BusinessException(ExceptionEnum.DATA_EMPTY);
             }
 
             // 封装成ArrayList
@@ -156,14 +156,14 @@ public class CheckNullAspect {
                     || Objects.isNull(brand.getDescription())
                     || Objects.isNull(brand.getOrdered())
                     || Objects.isNull(brand.getStatus())) {
-                throw new BusinessException(ResultEnum.DATA_PROPERTIES_UNCOMPLETED);
+                throw new BusinessException(ExceptionEnum.DATA_PROPERTIES_UNCOMPLETED);
             }
 
             // 除了add方法外，需做以下额外的判断
             if (!"addBrand".equals(joinPoint.getSignature().getName())) {
                 // id属性是否为null
                 if (Objects.isNull(brand.getId())) {
-                    throw new BusinessException(ResultEnum.DATA_PROPERTIES_UNCOMPLETED);
+                    throw new BusinessException(ExceptionEnum.DATA_PROPERTIES_UNCOMPLETED);
                 }
 
                 // 如不为null，则通过id查找数据库的真实brand
@@ -171,7 +171,7 @@ public class CheckNullAspect {
 
                 // 如查不到数据，则抛出异常
                 if (Objects.isNull(result)) {
-                    throw new BusinessException(ResultEnum.DATA_NOT_EXISTED);
+                    throw new BusinessException(ExceptionEnum.DATA_NOT_EXISTED);
                 }
 
                 // 如查到数据，delete还需与查到的数据进行比对，判断是否为要删除的数据
@@ -182,7 +182,7 @@ public class CheckNullAspect {
                             || !result.getDescription().equals(brand.getDescription())
                             || result.getOrdered() != brand.getOrdered()
                             || result.getStatus() != brand.getStatus()) {
-                        throw new BusinessException(ResultEnum.DATA_UNMATCHED);
+                        throw new BusinessException(ExceptionEnum.DATA_UNMATCHED);
                     }
                 }
             }
