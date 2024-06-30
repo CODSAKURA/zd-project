@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * PageBean实体类（目的：分页查询使用）
+ *
  * @author : 周迪
  * @date : 2024/03/30
  */

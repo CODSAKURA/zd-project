@@ -2,6 +2,7 @@ package pers.zhoudi.brand.dto;
 
 /**
  * 将数据进行特殊封装（目的：传递给前端）
+ *
  * @author : 周迪
  * @date : 2024/05/09
  */

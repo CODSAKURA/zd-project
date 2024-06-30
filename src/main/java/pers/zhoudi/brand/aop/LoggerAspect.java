@@ -12,6 +12,7 @@ import pers.zhoudi.brand.domain.service.LogDomainService;
 
 /**
  * 此类为AOP类，提供额外的记录日志功能给Domain层的所有方法。
+ *
  * @author : 周迪
  * @date : 2024/05/19
  */

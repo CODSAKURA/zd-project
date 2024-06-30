@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 /**
  * Log实体类
+ *
  * @author : 周迪
  * @date : 2024/04/09
  */

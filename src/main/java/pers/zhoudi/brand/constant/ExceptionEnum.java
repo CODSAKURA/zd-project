@@ -2,6 +2,7 @@ package pers.zhoudi.brand.constant;
 
 /**
  * 异常信息所对应的枚举类（与properties文件对应）
+ *
  * @author : 周迪
  * @date : 2024/06/26
  */
