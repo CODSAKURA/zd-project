@@ -22,7 +22,7 @@ function checkUserValid() {
     // 以下代码判断用户名是否符合规则
     var reg = /^\w{6,12}$/;
     var flag = reg.test(username);
-    if(flag == false){
+    if (flag == false) {
         document.getElementById("username_err").style.display = '';  // 展示
         document.getElementById("username_exist").style.display = 'none'; // 不展示
         return;
@@ -63,7 +63,7 @@ function checkPassword() {
     // 以下代码判断密码是否符合规则
     var reg = /^\w{6,12}$/;
     var flag = reg.test(password);
-    if(flag == false) {
+    if (flag == false) {
         document.getElementById("password_err").style.display = '';  // 展示
         return;
     }
@@ -103,8 +103,8 @@ function handleSubmit() {
                 // 将数据存储到 sessionStorage 中
                 sessionStorage.setItem("register_success", "register_success");
 
-                // 打开login页面
-                window.open(window.location.origin + "/zd_project_war/pages/login.html");
+                // 跳转到login页面
+                window.location.href = window.location.origin + "/zd_project_war/pages/login.html";
             }
 
             // 注册失败
