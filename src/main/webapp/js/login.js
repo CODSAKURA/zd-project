@@ -1,4 +1,3 @@
-// 由于注册成功会跳转回login页面，所以要冲session中获取是否有注册成功表示。
 window.onload = function () {
     // 从 sessionStorage 中获取数据
     var receivedData = sessionStorage.getItem("register_success");
@@ -23,9 +22,16 @@ function handleSubmit() {
     var passwordInput = document.getElementById("password");
     var password = passwordInput.value.trim();
 
+    // 获取当前页面的基本URL部分
+    var baseUrl = window.location.origin;
+
+    // 拼接完整的URL
+    var url = baseUrl + "/zd_project_war/users/username/" + username + "/password/" + password;
+
     axios({
         method: "GET",
-        url: "http://localhost:8080/zd_project_war/users/username/" + username + "/password/" + password
+        url: url,
+        withCredentials: true
     }).then(function (resp) {
         if (resp.data.code == 20021) {
             location.href = "../pages/brand.html";
@@ -35,7 +41,9 @@ function handleSubmit() {
             document.getElementById("registerSuccessMsg").style.display = 'none';
             document.getElementById("loginErrorMsg").style.display = '';
         }
-    })
+    }).catch(function (error) {
+        console.error("There was an error with the request:", error);
+    });
 };
 
 // 将按钮与方法名绑定

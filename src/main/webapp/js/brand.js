@@ -73,7 +73,7 @@ new Vue({
             }).then(() => {
                 axios({
                     method: "POST",
-                    url: "http://localhost:8080/zd_project_war/brands/deleteBatch",
+                    url: window.location.origin + "/zd_project_war/brands/deleteBatch",
                     data: _this.multipleSelection
                 }).then(function (resp) {
                     if (resp.data.code == 30061) {
@@ -105,7 +105,7 @@ new Vue({
             }).then(() => {
                 axios({
                     method: "POST",
-                    url: "http://localhost:8080/zd_project_war/brands/delete",
+                    url: window.location.origin + "/zd_project_war/brands/delete",
                     data: row
                 }).then(function (resp) {
                     if (resp.data.code == 30061) {
@@ -132,7 +132,7 @@ new Vue({
             var _this = this;
             axios({
                 method: "GET",
-                url: "http://localhost:8080/zd_project_war/brands/pages/" + _this.currentPage + "/pageSize/"
+                url: window.location.origin + "/zd_project_war/brands/pages/" + _this.currentPage + "/pageSize/"
                     + _this.pageSize + "/brand?brandName=" + _this.searchBrand.brandName
                     + "&companyName=" + _this.searchBrand.companyName + "&status=" + _this.searchBrand.status
             }).then(function (resp) {
@@ -162,7 +162,7 @@ new Vue({
                 if (valid) {
                     axios({
                         method: "POST",
-                        url: "http://localhost:8080/zd_project_war/brands",
+                        url: window.location.origin + "/zd_project_war/brands",
                         data: _this.brand
                     }).then(function (resp) {
                         if (resp.data.code == 30041) {
@@ -211,7 +211,7 @@ new Vue({
                 if (valid) {
                     axios({
                         method: "POST",
-                        url: "http://localhost:8080/zd_project_war/brands/update",
+                        url: window.location.origin + "/zd_project_war/brands/update",
                         data: _this.modifyBrand
                     }).then(function (resp) {
                         if (resp.data.code == 30051) {
