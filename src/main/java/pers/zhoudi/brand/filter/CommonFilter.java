@@ -16,7 +16,6 @@ import java.io.IOException;
  * @author : 周迪
  * @date : 2024/06/30
  */
-//TODO 尝试google chrome能不能访问 + 终端有解析HTTP请求header错误看看能不能取消掉
 @WebFilter("/*")
 public class CommonFilter implements Filter {
     @Override
