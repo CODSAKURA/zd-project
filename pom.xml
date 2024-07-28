@@ -4,15 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>pers.zhoudi.project</groupId>
     <artifactId>zd-project</artifactId>
-    <version>0.0.1</version>
-    <packaging>war</packaging>
+    <version>0.0.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
+    <!--设置管理的模块名称-->
+    <modules>
+        <module>project-backend</module>
+    </modules>
+
+    <!--设置通用包的版本号-->
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.relative.version>5.3.13</spring.relative.version>
+        <javax.servlet>3.1.0</javax.servlet>
+        <jackson.databind>2.9.0</jackson.databind>
+        <aspectj.version>1.9.2</aspectj.version>
+        <spring.jpa.version>2.6.0</spring.jpa.version>
+        <spring.jpa.hibernate>5.4.32.Final</spring.jpa.hibernate>
+        <spring.jpa.querydsl>4.4.0</spring.jpa.querydsl>
+        <spring.framework.test>5.2.10.RELEASE</spring.framework.test>
+        <postgresql.version>42.6.0</postgresql.version>
+        <druid.version>1.2.8</druid.version>
+        <junit.version>4.13</junit.version>
     </properties>
 
     <dependencies>
@@ -20,14 +34,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.3.13</version>
+            <version>${spring.relative.version}</version>
         </dependency>
 
         <!--导入Spring MVC相关的依赖（Servlet）-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -35,102 +49,76 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.0</version>
+            <version>${jackson.databind}</version>
         </dependency>
 
         <!--导入Spring Framework的依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.13</version>
+            <version>${spring.relative.version}</version>
         </dependency>
 
         <!--导入Spring Framework相关的依赖（AspectJ）-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.2</version>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <!--导入Spring Data Jpa的依赖-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>2.6.0</version>
+            <version>${spring.jpa.version}</version>
         </dependency>
 
         <!--导入Spring Data Jpa相关的依赖（Hibernate）-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.4.32.Final</version>
+            <version>${spring.jpa.hibernate}</version>
         </dependency>
 
         <!--导入Spring Data Jpa相关的依赖（QueryDSL）-->
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
-            <version>4.4.0</version>
-        </dependency>
-
-        <!--导入Spring Framework Test的依赖-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>5.2.10.RELEASE</version>
+            <version>${spring.jpa.querydsl}</version>
         </dependency>
 
         <!--导入PostgreSQL驱动的依赖-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>${postgresql.version}</version>
         </dependency>
 
         <!--导入Druid连接池依赖-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.2.8</version>
-        </dependency>
-
-        <!--导入junit4的依赖-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13</version>
-            <scope>test</scope>
+            <version>${druid.version}</version>
         </dependency>
     </dependencies>
 
-    <!--Tomcat以及Q类生成插件-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/generated-sources/queries</outputDirectory>
-                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-                            <logOnlyOnError>true</logOnlyOnError>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.querydsl</groupId>
-                        <artifactId>querydsl-apt</artifactId>
-                        <version>4.4.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+    <!--可选依赖引入【引入以下依赖由子类决定】-->
+    <dependencyManagement>
+        <dependencies>
+            <!--将Spring Framework Test转为可选依赖-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.framework.test}</version>
+            </dependency>
+
+            <!--将junit转为可选依赖-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
